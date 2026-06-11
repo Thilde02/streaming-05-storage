@@ -24,7 +24,7 @@ and should not need project-specific modifications.
 # are designed to manage resources and state
 # and are excellent additions to this type of pipeline for production use.
 
-Author: Denise Case
+Author: Tiffany Hildebrand
 Date: 2026-05
 
 Terminal command to run this file from the root project folder:
@@ -70,7 +70,7 @@ from streaming.storage.storage_case import init_db, write_valid_record
 
 # === CONFIGURE LOGGER ===
 
-LOG = get_logger("C05", level="DEBUG")
+LOG = get_logger("HILDEBRAND", level="DEBUG")
 
 # === LOAD ENVIRONMENT VARIABLES ===
 
@@ -275,6 +275,14 @@ def process_message(
     LOG.info(f"tax={enriched['tax_amount']}")
     LOG.info(f"total={enriched['total']}")
     LOG.info(f"running_total={stats.total + enriched['total']:.2f}")
+
+    # Phase 4: Add new computed field
+    discount_code = enriched.get("discount_code", "")
+    discount_rate = 0.10 if discount_code else 0.0
+    discount_amount = enriched["subtotal"] * discount_rate
+    enriched["discount_amount"] = round(discount_amount, 2)
+
+    LOG.info(f"discount_amount={enriched['discount_amount']}")
 
 
     stats.update(enriched["total"])
