@@ -10,7 +10,7 @@ Reads sales messages from a Kafka topic and runs the full pipeline:
 Start with main() at the bottom.
 Work up to see how it all fits together.
 
-Many functions are standard helpers
+# Many functions are standard helpers
 and should not need project-specific modifications.
 
 # In this example, we open, write, and close the DuckDB database
@@ -66,7 +66,7 @@ from streaming.data_validation.data_contract_case import (
     SALES_REQUIRED_FIELDS,
     validate_required_fields,
 )
-from streaming.storage.storage_case import init_db, write_valid_record
+from streaming.storage.storage_hildebrand import init_db, write_valid_record
 
 # === CONFIGURE LOGGER ===
 
@@ -89,8 +89,8 @@ ROOT_DIR: Final[Path] = Path.cwd()
 DATA_DIR: Final[Path] = ROOT_DIR / "data"
 OUTPUT_DIR: Final[Path] = DATA_DIR / "output"
 
-OUTPUT_CSV: Final[Path] = OUTPUT_DIR / "consumed_sales.csv"
-OUTPUT_DB: Final[Path] = OUTPUT_DIR / "sales.duckdb"
+OUTPUT_CSV = DATA_DIR / "output" / "hildebrand_high_value_sales.csv"
+OUTPUT_DB = DATA_DIR / "output" / "hildebrand_high_value.duckdb"
 
 REGIONS_CSV: Final[Path] = DATA_DIR / "regions.csv"
 PRODUCTS_CSV: Final[Path] = DATA_DIR / "products.csv"
@@ -284,10 +284,14 @@ def process_message(
 
     LOG.info(f"discount_amount={enriched['discount_amount']}")
 
+    # ⭐⭐⭐ PHASE 5: High-value order classification ⭐⭐⭐
+    enriched["is_high_value"] = enriched["total"] > 100
+    LOG.info(f"is_high_value={enriched['is_high_value']}")
 
     stats.update(enriched["total"])
 
     return enriched
+
 
 
 def consume_messages(

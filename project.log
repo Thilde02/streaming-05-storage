@@ -2186,3 +2186,1235 @@
 2026-06-11 18:44:39 | INFO | HILDEBRAND | ========================
 2026-06-11 18:44:39 | INFO | HILDEBRAND | Consumer executed successfully!
 2026-06-11 18:44:39 | INFO | HILDEBRAND | ========================
+2026-06-11 19:01:25 | DEBUG | HILDEBRAND | No variables found in .env
+2026-06-11 19:01:25 | INFO | HILDEBRAND | === RUN START ===
+2026-06-11 19:01:25 | INFO | HILDEBRAND | project=C05
+2026-06-11 19:01:25 | INFO | HILDEBRAND | repo_dir=streaming-05-storage
+2026-06-11 19:01:25 | INFO | HILDEBRAND | python=3.14.4
+2026-06-11 19:01:25 | INFO | HILDEBRAND | os=Linux 6.6.114.1-microsoft-standard-WSL2
+2026-06-11 19:01:25 | INFO | HILDEBRAND | shell=bash
+2026-06-11 19:01:25 | INFO | HILDEBRAND | cwd=.
+2026-06-11 19:01:25 | INFO | HILDEBRAND | github_actions=False
+2026-06-11 19:01:25 | INFO | HILDEBRAND | ========================
+2026-06-11 19:01:25 | INFO | HILDEBRAND | START consumer main()
+2026-06-11 19:01:25 | INFO | HILDEBRAND | ========================
+2026-06-11 19:01:25 | INFO | HILDEBRAND | ROOT_DIR = .
+2026-06-11 19:01:25 | INFO | HILDEBRAND | DATA_DIR = data
+2026-06-11 19:01:25 | INFO | HILDEBRAND | OUTPUT_CSV = data/output/consumed_sales.csv
+2026-06-11 19:01:25 | INFO | HILDEBRAND | OUTPUT_DB = data/output/sales.duckdb
+2026-06-11 19:01:25 | INFO | HILDEBRAND | REGIONS_CSV = data/regions.csv
+2026-06-11 19:01:25 | INFO | HILDEBRAND | PRODUCTS_CSV = data/products.csv
+2026-06-11 19:01:25 | INFO | HILDEBRAND | CURRENCIES_CSV = data/currencies.csv
+2026-06-11 19:01:25 | INFO | HILDEBRAND | DISCOUNT_CODES_CSV = data/discount_codes.csv
+2026-06-11 19:01:25 | INFO | HILDEBRAND | ========================
+2026-06-11 19:01:25 | INFO | HILDEBRAND | SECTION A. Acquire
+2026-06-11 19:01:25 | INFO | HILDEBRAND | ========================
+2026-06-11 19:01:25 | INFO | HILDEBRAND | Loading settings from .env...
+2026-06-11 19:01:25 | INFO | HILDEBRAND | KAFKA_BOOTSTRAP_SERVERS  = localhost:9092
+2026-06-11 19:01:25 | INFO | HILDEBRAND | KAFKA_TOPIC              = product-sales-case
+2026-06-11 19:01:25 | INFO | HILDEBRAND | KAFKA_GROUP_ID           = streaming-consumer-group-A
+2026-06-11 19:01:25 | INFO | HILDEBRAND | CONSUMER_TIMEOUT_SECONDS = 10.0
+2026-06-11 19:01:25 | INFO | HILDEBRAND | CONSUMER_MAX_MESSAGES    = 1000
+2026-06-11 19:01:25 | INFO | HILDEBRAND | Verifying Kafka connection...
+2026-06-11 19:01:25 | INFO | HILDEBRAND | Kafka port is reachable.
+2026-06-11 19:01:25 | INFO | HILDEBRAND | Verifying Kafka topic...
+2026-06-11 19:01:25 | INFO | HILDEBRAND | Topic 'product-sales-case' exists.
+2026-06-11 19:01:25 | INFO | HILDEBRAND | Found 6 message(s) available.
+2026-06-11 19:01:25 | INFO | HILDEBRAND | Creating Kafka consumer...
+2026-06-11 19:01:25 | INFO | HILDEBRAND | Subscribed to topic: 'product-sales-case' (reading from beginning)
+2026-06-11 19:01:25 | INFO | HILDEBRAND | ========================
+2026-06-11 19:01:25 | INFO | HILDEBRAND | SECTION C. Consume and Process Messages
+2026-06-11 19:01:25 | INFO | HILDEBRAND | ========================
+2026-06-11 19:01:25 | INFO | HILDEBRAND | Initializing output...
+2026-06-11 19:01:25 | INFO | HILDEBRAND | Output CSV cleared: consumed_sales.csv
+2026-06-11 19:01:25 | INFO | HILDEBRAND | Database initialized: sales.duckdb
+2026-06-11 19:01:25 | INFO | HILDEBRAND | Loading enrichment reference data...
+2026-06-11 19:01:25 | INFO | HILDEBRAND | Found 6 region tax rates.
+2026-06-11 19:01:25 | INFO | HILDEBRAND | Consuming messages...
+2026-06-11 19:01:25 | INFO | HILDEBRAND | Waiting for up to 1000 message(s).
+2026-06-11 19:01:25 | INFO | HILDEBRAND | Press CTRL+C to stop early.
+
+2026-06-11 19:01:25 | INFO | HILDEBRAND | {'currency_code': 'USD', 'customer_id': 'CUST-4150', 'customer_note': 'Gift for my team', 'datetime': '2026-05-04T08:11:00Z', 'device_type': 'tablet', 'discount_code': '', 'is_new_customer': 'false', 'is_online': 'true', 'order_id': 'e7324981-a9f0-419f-b708-d0a333451fff', 'payment_method': 'paypal', 'product_id': 'PY-STREAM-005', 'quantity': '3', 'referral_source': 'paid_search', 'region_id': 'US-TX', 'unit_price': '59.99', '_kafka_key': 'US-TX', '_kafka_partition': 0, '_kafka_offset': 0}
+2026-06-11 19:01:25 | INFO | HILDEBRAND | subtotal=179.97
+2026-06-11 19:01:25 | INFO | HILDEBRAND | tax=14.85
+2026-06-11 19:01:25 | INFO | HILDEBRAND | total=194.82
+2026-06-11 19:01:25 | INFO | HILDEBRAND | running_total=194.82
+2026-06-11 19:01:25 | INFO | HILDEBRAND | discount_amount=0.0
+2026-06-11 19:01:25 | INFO | HILDEBRAND | is_high_value=True
+2026-06-11 19:01:26 | INFO | HILDEBRAND | Wrote valid record to DuckDB:
+2026-06-11 19:01:26 | INFO | HILDEBRAND |   order=e7324981-a9f0-419f-b708-d0a333451fff
+2026-06-11 19:01:26 | INFO | HILDEBRAND | MESSAGE ACCEPTED
+2026-06-11 19:01:26 | INFO | HILDEBRAND | order=e7324981-a9f0-419f-b708-d0a333451fff
+2026-06-11 19:01:26 | INFO | HILDEBRAND | total=$194.82
+2026-06-11 19:01:26 | INFO | HILDEBRAND | consumed=1
+2026-06-11 19:01:26 | INFO | HILDEBRAND | RUNNING STATS
+2026-06-11 19:01:26 | INFO | HILDEBRAND | total_sales=$194.82
+2026-06-11 19:01:26 | INFO | HILDEBRAND | average=$194.82
+2026-06-11 19:01:26 | INFO | HILDEBRAND | min=$194.82
+2026-06-11 19:01:26 | INFO | HILDEBRAND | max=$194.82
+2026-06-11 19:01:26 | INFO | HILDEBRAND | {'currency_code': 'USD', 'customer_id': 'CUST-1106', 'customer_note': 'Gift for my team', 'datetime': '2026-05-04T08:23:00Z', 'device_type': 'mobile', 'discount_code': '', 'is_new_customer': 'false', 'is_online': 'true', 'order_id': 'd61943e0-f543-4b5f-9c9a-18605ea4cfe5', 'payment_method': 'paypal', 'product_id': 'PY-DATA-002', 'quantity': '1', 'referral_source': 'paid_search', 'region_id': 'US-TX', 'unit_price': '49.99', '_kafka_key': 'US-TX', '_kafka_partition': 0, '_kafka_offset': 1}
+2026-06-11 19:01:26 | INFO | HILDEBRAND | subtotal=49.99
+2026-06-11 19:01:26 | INFO | HILDEBRAND | tax=4.12
+2026-06-11 19:01:26 | INFO | HILDEBRAND | total=54.11
+2026-06-11 19:01:26 | INFO | HILDEBRAND | running_total=248.93
+2026-06-11 19:01:26 | INFO | HILDEBRAND | discount_amount=0.0
+2026-06-11 19:01:26 | INFO | HILDEBRAND | is_high_value=False
+2026-06-11 19:01:26 | INFO | HILDEBRAND | Wrote valid record to DuckDB:
+2026-06-11 19:01:26 | INFO | HILDEBRAND |   order=d61943e0-f543-4b5f-9c9a-18605ea4cfe5
+2026-06-11 19:01:26 | INFO | HILDEBRAND | MESSAGE ACCEPTED
+2026-06-11 19:01:26 | INFO | HILDEBRAND | order=d61943e0-f543-4b5f-9c9a-18605ea4cfe5
+2026-06-11 19:01:26 | INFO | HILDEBRAND | total=$54.11
+2026-06-11 19:01:26 | INFO | HILDEBRAND | consumed=2
+2026-06-11 19:01:26 | INFO | HILDEBRAND | RUNNING STATS
+2026-06-11 19:01:26 | INFO | HILDEBRAND | total_sales=$248.93
+2026-06-11 19:01:26 | INFO | HILDEBRAND | average=$124.47
+2026-06-11 19:01:26 | INFO | HILDEBRAND | min=$54.11
+2026-06-11 19:01:26 | INFO | HILDEBRAND | max=$194.82
+2026-06-11 19:01:26 | INFO | HILDEBRAND | {'currency_code': 'CAD', 'customer_id': 'CUST-2133', 'customer_note': 'Learning at my own pace', 'datetime': '2026-05-04T08:28:00Z', 'device_type': 'desktop', 'discount_code': '', 'is_new_customer': 'false', 'is_online': 'true', 'order_id': '14da1915-8e74-47be-9e10-f7275d31af46', 'payment_method': 'paypal', 'product_id': 'PY-NLP-006', 'quantity': '1', 'referral_source': 'organic', 'region_id': 'CA-QC', 'unit_price': '54.99', '_kafka_key': 'CA-QC', '_kafka_partition': 0, '_kafka_offset': 2}
+2026-06-11 19:01:26 | INFO | HILDEBRAND | subtotal=54.99
+2026-06-11 19:01:26 | INFO | HILDEBRAND | tax=8.23
+2026-06-11 19:01:26 | INFO | HILDEBRAND | total=63.22
+2026-06-11 19:01:26 | INFO | HILDEBRAND | running_total=312.15
+2026-06-11 19:01:26 | INFO | HILDEBRAND | discount_amount=0.0
+2026-06-11 19:01:26 | INFO | HILDEBRAND | is_high_value=False
+2026-06-11 19:01:26 | INFO | HILDEBRAND | Wrote valid record to DuckDB:
+2026-06-11 19:01:26 | INFO | HILDEBRAND |   order=14da1915-8e74-47be-9e10-f7275d31af46
+2026-06-11 19:01:26 | INFO | HILDEBRAND | MESSAGE ACCEPTED
+2026-06-11 19:01:26 | INFO | HILDEBRAND | order=14da1915-8e74-47be-9e10-f7275d31af46
+2026-06-11 19:01:26 | INFO | HILDEBRAND | total=$63.22
+2026-06-11 19:01:26 | INFO | HILDEBRAND | consumed=3
+2026-06-11 19:01:26 | INFO | HILDEBRAND | RUNNING STATS
+2026-06-11 19:01:26 | INFO | HILDEBRAND | total_sales=$312.15
+2026-06-11 19:01:26 | INFO | HILDEBRAND | average=$104.05
+2026-06-11 19:01:26 | INFO | HILDEBRAND | min=$54.11
+2026-06-11 19:01:26 | INFO | HILDEBRAND | max=$194.82
+2026-06-11 19:01:26 | INFO | HILDEBRAND | {'currency_code': 'USD', 'customer_id': 'CUST-5333', 'customer_note': 'Highly recommend', 'datetime': '2026-05-04T08:40:00Z', 'device_type': 'mobile', 'discount_code': '', 'is_new_customer': 'false', 'is_online': 'true', 'order_id': 'd77ed935-9b28-431d-bc25-0a3fd98f4154', 'payment_method': 'paypal', 'product_id': 'PY-STREAM-005', 'quantity': '1', 'referral_source': 'organic', 'region_id': 'US-CA', 'unit_price': '59.99', '_kafka_key': 'US-CA', '_kafka_partition': 0, '_kafka_offset': 3}
+2026-06-11 19:01:26 | INFO | HILDEBRAND | subtotal=59.99
+2026-06-11 19:01:26 | INFO | HILDEBRAND | tax=5.7
+2026-06-11 19:01:26 | INFO | HILDEBRAND | total=65.69
+2026-06-11 19:01:26 | INFO | HILDEBRAND | running_total=377.84
+2026-06-11 19:01:26 | INFO | HILDEBRAND | discount_amount=0.0
+2026-06-11 19:01:26 | INFO | HILDEBRAND | is_high_value=False
+2026-06-11 19:01:26 | INFO | HILDEBRAND | Wrote valid record to DuckDB:
+2026-06-11 19:01:26 | INFO | HILDEBRAND |   order=d77ed935-9b28-431d-bc25-0a3fd98f4154
+2026-06-11 19:01:26 | INFO | HILDEBRAND | MESSAGE ACCEPTED
+2026-06-11 19:01:26 | INFO | HILDEBRAND | order=d77ed935-9b28-431d-bc25-0a3fd98f4154
+2026-06-11 19:01:26 | INFO | HILDEBRAND | total=$65.69
+2026-06-11 19:01:26 | INFO | HILDEBRAND | consumed=4
+2026-06-11 19:01:26 | INFO | HILDEBRAND | RUNNING STATS
+2026-06-11 19:01:26 | INFO | HILDEBRAND | total_sales=$377.84
+2026-06-11 19:01:26 | INFO | HILDEBRAND | average=$94.46
+2026-06-11 19:01:26 | INFO | HILDEBRAND | min=$54.11
+2026-06-11 19:01:26 | INFO | HILDEBRAND | max=$194.82
+2026-06-11 19:01:26 | INFO | HILDEBRAND | {'currency_code': 'USD', 'customer_id': 'CUST-8573', 'customer_note': 'Learning at my own pace', 'datetime': '2026-05-04T08:41:00Z', 'device_type': 'mobile', 'discount_code': '', 'is_new_customer': 'false', 'is_online': 'true', 'order_id': '24b91995-25f8-4ad7-8fa6-2e4c15750e5e', 'payment_method': 'apple_pay', 'product_id': 'PY-VIZ-003', 'quantity': '1', 'referral_source': 'paid_search', 'region_id': 'US-MO', 'unit_price': '39.99', '_kafka_key': 'US-MO', '_kafka_partition': 0, '_kafka_offset': 4}
+2026-06-11 19:01:26 | INFO | HILDEBRAND | subtotal=39.99
+2026-06-11 19:01:26 | INFO | HILDEBRAND | tax=3.2
+2026-06-11 19:01:26 | INFO | HILDEBRAND | total=43.19
+2026-06-11 19:01:26 | INFO | HILDEBRAND | running_total=421.03
+2026-06-11 19:01:26 | INFO | HILDEBRAND | discount_amount=0.0
+2026-06-11 19:01:26 | INFO | HILDEBRAND | is_high_value=False
+2026-06-11 19:01:27 | INFO | HILDEBRAND | Wrote valid record to DuckDB:
+2026-06-11 19:01:27 | INFO | HILDEBRAND |   order=24b91995-25f8-4ad7-8fa6-2e4c15750e5e
+2026-06-11 19:01:27 | INFO | HILDEBRAND | MESSAGE ACCEPTED
+2026-06-11 19:01:27 | INFO | HILDEBRAND | order=24b91995-25f8-4ad7-8fa6-2e4c15750e5e
+2026-06-11 19:01:27 | INFO | HILDEBRAND | total=$43.19
+2026-06-11 19:01:27 | INFO | HILDEBRAND | consumed=5
+2026-06-11 19:01:27 | INFO | HILDEBRAND | RUNNING STATS
+2026-06-11 19:01:27 | INFO | HILDEBRAND | total_sales=$421.03
+2026-06-11 19:01:27 | INFO | HILDEBRAND | average=$84.21
+2026-06-11 19:01:27 | INFO | HILDEBRAND | min=$43.19
+2026-06-11 19:01:27 | INFO | HILDEBRAND | max=$194.82
+2026-06-11 19:01:27 | INFO | HILDEBRAND | {'currency_code': 'CAD', 'customer_id': 'CUST-8062', 'customer_note': '', 'datetime': '2026-05-04T08:54:00Z', 'device_type': 'tablet', 'discount_code': '', 'is_new_customer': 'false', 'is_online': 'true', 'order_id': '1ec0fc8b-998c-4f43-8a66-19e1fa7d5fa8', 'payment_method': 'paypal', 'product_id': 'PY-SQL-004', 'quantity': '1', 'referral_source': 'organic', 'region_id': 'CA-ON', 'unit_price': '44.99', '_kafka_key': 'CA-ON', '_kafka_partition': 0, '_kafka_offset': 5}
+2026-06-11 19:01:27 | INFO | HILDEBRAND | subtotal=44.99
+2026-06-11 19:01:27 | INFO | HILDEBRAND | tax=5.85
+2026-06-11 19:01:27 | INFO | HILDEBRAND | total=50.84
+2026-06-11 19:01:27 | INFO | HILDEBRAND | running_total=471.87
+2026-06-11 19:01:27 | INFO | HILDEBRAND | discount_amount=0.0
+2026-06-11 19:01:27 | INFO | HILDEBRAND | is_high_value=False
+2026-06-11 19:01:27 | INFO | HILDEBRAND | Wrote valid record to DuckDB:
+2026-06-11 19:01:27 | INFO | HILDEBRAND |   order=1ec0fc8b-998c-4f43-8a66-19e1fa7d5fa8
+2026-06-11 19:01:27 | INFO | HILDEBRAND | MESSAGE ACCEPTED
+2026-06-11 19:01:27 | INFO | HILDEBRAND | order=1ec0fc8b-998c-4f43-8a66-19e1fa7d5fa8
+2026-06-11 19:01:27 | INFO | HILDEBRAND | total=$50.84
+2026-06-11 19:01:27 | INFO | HILDEBRAND | consumed=6
+2026-06-11 19:01:27 | INFO | HILDEBRAND | RUNNING STATS
+2026-06-11 19:01:27 | INFO | HILDEBRAND | total_sales=$471.87
+2026-06-11 19:01:27 | INFO | HILDEBRAND | average=$78.64
+2026-06-11 19:01:27 | INFO | HILDEBRAND | min=$43.19
+2026-06-11 19:01:27 | INFO | HILDEBRAND | max=$194.82
+2026-06-11 19:01:37 | INFO | HILDEBRAND | No message received within 10.0s timeout.
+2026-06-11 19:01:37 | INFO | HILDEBRAND | Producer finished or paused. Stopping consumer.
+2026-06-11 19:01:37 | INFO | HILDEBRAND | Kafka consumer closed.
+2026-06-11 19:01:37 | INFO | HILDEBRAND | Saving artifacts...
+2026-06-11 19:01:37 | INFO | HILDEBRAND | WROTE OUTPUT_CSV = data/output/consumed_sales.csv
+2026-06-11 19:01:37 | INFO | HILDEBRAND | WROTE OUTPUT_DB = data/output/sales.duckdb
+2026-06-11 19:01:37 | INFO | HILDEBRAND | ========================
+2026-06-11 19:01:37 | INFO | HILDEBRAND | SECTION E. Exit
+2026-06-11 19:01:37 | INFO | HILDEBRAND | ========================
+2026-06-11 19:01:37 | INFO | HILDEBRAND | Summary:
+2026-06-11 19:01:37 | INFO | HILDEBRAND | Consumed 6 message(s) from topic 'product-sales-case'.
+2026-06-11 19:01:37 | INFO | HILDEBRAND | Skipped  0 message(s).
+2026-06-11 19:01:37 | INFO | HILDEBRAND | OUTPUT_CSV = data/output/consumed_sales.csv
+2026-06-11 19:01:37 | INFO | HILDEBRAND |   Total sales:  $471.87
+2026-06-11 19:01:37 | INFO | HILDEBRAND |   Average sale: $78.64
+2026-06-11 19:01:37 | INFO | HILDEBRAND |   Minimum sale: $43.19
+2026-06-11 19:01:37 | INFO | HILDEBRAND |   Maximum sale: $194.82
+2026-06-11 19:01:37 | INFO | HILDEBRAND | ========================
+2026-06-11 19:01:37 | INFO | HILDEBRAND | Consumer executed successfully!
+2026-06-11 19:01:37 | INFO | HILDEBRAND | ========================
+2026-06-11 19:01:51 | DEBUG | HILDEBRAND | No variables found in .env
+2026-06-11 19:01:51 | INFO | HILDEBRAND | === RUN START ===
+2026-06-11 19:01:51 | INFO | HILDEBRAND | project=C05
+2026-06-11 19:01:51 | INFO | HILDEBRAND | repo_dir=streaming-05-storage
+2026-06-11 19:01:51 | INFO | HILDEBRAND | python=3.14.4
+2026-06-11 19:01:51 | INFO | HILDEBRAND | os=Linux 6.6.114.1-microsoft-standard-WSL2
+2026-06-11 19:01:51 | INFO | HILDEBRAND | shell=bash
+2026-06-11 19:01:51 | INFO | HILDEBRAND | cwd=.
+2026-06-11 19:01:51 | INFO | HILDEBRAND | github_actions=False
+2026-06-11 19:01:51 | INFO | HILDEBRAND | ========================
+2026-06-11 19:01:51 | INFO | HILDEBRAND | START consumer main()
+2026-06-11 19:01:51 | INFO | HILDEBRAND | ========================
+2026-06-11 19:01:51 | INFO | HILDEBRAND | ROOT_DIR = .
+2026-06-11 19:01:51 | INFO | HILDEBRAND | DATA_DIR = data
+2026-06-11 19:01:51 | INFO | HILDEBRAND | OUTPUT_CSV = data/output/consumed_sales.csv
+2026-06-11 19:01:51 | INFO | HILDEBRAND | OUTPUT_DB = data/output/sales.duckdb
+2026-06-11 19:01:51 | INFO | HILDEBRAND | REGIONS_CSV = data/regions.csv
+2026-06-11 19:01:51 | INFO | HILDEBRAND | PRODUCTS_CSV = data/products.csv
+2026-06-11 19:01:51 | INFO | HILDEBRAND | CURRENCIES_CSV = data/currencies.csv
+2026-06-11 19:01:51 | INFO | HILDEBRAND | DISCOUNT_CODES_CSV = data/discount_codes.csv
+2026-06-11 19:01:51 | INFO | HILDEBRAND | ========================
+2026-06-11 19:01:51 | INFO | HILDEBRAND | SECTION A. Acquire
+2026-06-11 19:01:51 | INFO | HILDEBRAND | ========================
+2026-06-11 19:01:51 | INFO | HILDEBRAND | Loading settings from .env...
+2026-06-11 19:01:51 | INFO | HILDEBRAND | KAFKA_BOOTSTRAP_SERVERS  = localhost:9092
+2026-06-11 19:01:51 | INFO | HILDEBRAND | KAFKA_TOPIC              = product-sales-case
+2026-06-11 19:01:51 | INFO | HILDEBRAND | KAFKA_GROUP_ID           = streaming-consumer-group-A
+2026-06-11 19:01:51 | INFO | HILDEBRAND | CONSUMER_TIMEOUT_SECONDS = 10.0
+2026-06-11 19:01:51 | INFO | HILDEBRAND | CONSUMER_MAX_MESSAGES    = 1000
+2026-06-11 19:01:51 | INFO | HILDEBRAND | Verifying Kafka connection...
+2026-06-11 19:01:51 | INFO | HILDEBRAND | Kafka port is reachable.
+2026-06-11 19:01:51 | INFO | HILDEBRAND | Verifying Kafka topic...
+2026-06-11 19:01:51 | INFO | HILDEBRAND | Topic 'product-sales-case' exists.
+2026-06-11 19:01:51 | INFO | HILDEBRAND | Found 6 message(s) available.
+2026-06-11 19:01:51 | INFO | HILDEBRAND | Creating Kafka consumer...
+2026-06-11 19:01:51 | INFO | HILDEBRAND | Subscribed to topic: 'product-sales-case' (reading from beginning)
+2026-06-11 19:01:51 | INFO | HILDEBRAND | ========================
+2026-06-11 19:01:51 | INFO | HILDEBRAND | SECTION C. Consume and Process Messages
+2026-06-11 19:01:51 | INFO | HILDEBRAND | ========================
+2026-06-11 19:01:51 | INFO | HILDEBRAND | Initializing output...
+2026-06-11 19:01:51 | INFO | HILDEBRAND | Output CSV cleared: consumed_sales.csv
+2026-06-11 19:01:51 | INFO | HILDEBRAND | Database initialized: sales.duckdb
+2026-06-11 19:01:51 | INFO | HILDEBRAND | Loading enrichment reference data...
+2026-06-11 19:01:51 | INFO | HILDEBRAND | Found 6 region tax rates.
+2026-06-11 19:01:51 | INFO | HILDEBRAND | Consuming messages...
+2026-06-11 19:01:51 | INFO | HILDEBRAND | Waiting for up to 1000 message(s).
+2026-06-11 19:01:51 | INFO | HILDEBRAND | Press CTRL+C to stop early.
+
+2026-06-11 19:01:51 | INFO | HILDEBRAND | {'currency_code': 'USD', 'customer_id': 'CUST-4150', 'customer_note': 'Gift for my team', 'datetime': '2026-05-04T08:11:00Z', 'device_type': 'tablet', 'discount_code': '', 'is_new_customer': 'false', 'is_online': 'true', 'order_id': 'e7324981-a9f0-419f-b708-d0a333451fff', 'payment_method': 'paypal', 'product_id': 'PY-STREAM-005', 'quantity': '3', 'referral_source': 'paid_search', 'region_id': 'US-TX', 'unit_price': '59.99', '_kafka_key': 'US-TX', '_kafka_partition': 0, '_kafka_offset': 0}
+2026-06-11 19:01:51 | INFO | HILDEBRAND | subtotal=179.97
+2026-06-11 19:01:51 | INFO | HILDEBRAND | tax=14.85
+2026-06-11 19:01:51 | INFO | HILDEBRAND | total=194.82
+2026-06-11 19:01:51 | INFO | HILDEBRAND | running_total=194.82
+2026-06-11 19:01:51 | INFO | HILDEBRAND | discount_amount=0.0
+2026-06-11 19:01:51 | INFO | HILDEBRAND | is_high_value=True
+2026-06-11 19:01:52 | INFO | HILDEBRAND | Wrote valid record to DuckDB:
+2026-06-11 19:01:52 | INFO | HILDEBRAND |   order=e7324981-a9f0-419f-b708-d0a333451fff
+2026-06-11 19:01:52 | INFO | HILDEBRAND | MESSAGE ACCEPTED
+2026-06-11 19:01:52 | INFO | HILDEBRAND | order=e7324981-a9f0-419f-b708-d0a333451fff
+2026-06-11 19:01:52 | INFO | HILDEBRAND | total=$194.82
+2026-06-11 19:01:52 | INFO | HILDEBRAND | consumed=1
+2026-06-11 19:01:52 | INFO | HILDEBRAND | RUNNING STATS
+2026-06-11 19:01:52 | INFO | HILDEBRAND | total_sales=$194.82
+2026-06-11 19:01:52 | INFO | HILDEBRAND | average=$194.82
+2026-06-11 19:01:52 | INFO | HILDEBRAND | min=$194.82
+2026-06-11 19:01:52 | INFO | HILDEBRAND | max=$194.82
+2026-06-11 19:01:52 | INFO | HILDEBRAND | {'currency_code': 'USD', 'customer_id': 'CUST-1106', 'customer_note': 'Gift for my team', 'datetime': '2026-05-04T08:23:00Z', 'device_type': 'mobile', 'discount_code': '', 'is_new_customer': 'false', 'is_online': 'true', 'order_id': 'd61943e0-f543-4b5f-9c9a-18605ea4cfe5', 'payment_method': 'paypal', 'product_id': 'PY-DATA-002', 'quantity': '1', 'referral_source': 'paid_search', 'region_id': 'US-TX', 'unit_price': '49.99', '_kafka_key': 'US-TX', '_kafka_partition': 0, '_kafka_offset': 1}
+2026-06-11 19:01:52 | INFO | HILDEBRAND | subtotal=49.99
+2026-06-11 19:01:52 | INFO | HILDEBRAND | tax=4.12
+2026-06-11 19:01:52 | INFO | HILDEBRAND | total=54.11
+2026-06-11 19:01:52 | INFO | HILDEBRAND | running_total=248.93
+2026-06-11 19:01:52 | INFO | HILDEBRAND | discount_amount=0.0
+2026-06-11 19:01:52 | INFO | HILDEBRAND | is_high_value=False
+2026-06-11 19:01:52 | INFO | HILDEBRAND | Wrote valid record to DuckDB:
+2026-06-11 19:01:52 | INFO | HILDEBRAND |   order=d61943e0-f543-4b5f-9c9a-18605ea4cfe5
+2026-06-11 19:01:52 | INFO | HILDEBRAND | MESSAGE ACCEPTED
+2026-06-11 19:01:52 | INFO | HILDEBRAND | order=d61943e0-f543-4b5f-9c9a-18605ea4cfe5
+2026-06-11 19:01:52 | INFO | HILDEBRAND | total=$54.11
+2026-06-11 19:01:52 | INFO | HILDEBRAND | consumed=2
+2026-06-11 19:01:52 | INFO | HILDEBRAND | RUNNING STATS
+2026-06-11 19:01:52 | INFO | HILDEBRAND | total_sales=$248.93
+2026-06-11 19:01:52 | INFO | HILDEBRAND | average=$124.47
+2026-06-11 19:01:52 | INFO | HILDEBRAND | min=$54.11
+2026-06-11 19:01:52 | INFO | HILDEBRAND | max=$194.82
+2026-06-11 19:01:52 | INFO | HILDEBRAND | {'currency_code': 'CAD', 'customer_id': 'CUST-2133', 'customer_note': 'Learning at my own pace', 'datetime': '2026-05-04T08:28:00Z', 'device_type': 'desktop', 'discount_code': '', 'is_new_customer': 'false', 'is_online': 'true', 'order_id': '14da1915-8e74-47be-9e10-f7275d31af46', 'payment_method': 'paypal', 'product_id': 'PY-NLP-006', 'quantity': '1', 'referral_source': 'organic', 'region_id': 'CA-QC', 'unit_price': '54.99', '_kafka_key': 'CA-QC', '_kafka_partition': 0, '_kafka_offset': 2}
+2026-06-11 19:01:52 | INFO | HILDEBRAND | subtotal=54.99
+2026-06-11 19:01:52 | INFO | HILDEBRAND | tax=8.23
+2026-06-11 19:01:52 | INFO | HILDEBRAND | total=63.22
+2026-06-11 19:01:52 | INFO | HILDEBRAND | running_total=312.15
+2026-06-11 19:01:52 | INFO | HILDEBRAND | discount_amount=0.0
+2026-06-11 19:01:52 | INFO | HILDEBRAND | is_high_value=False
+2026-06-11 19:01:52 | INFO | HILDEBRAND | Wrote valid record to DuckDB:
+2026-06-11 19:01:52 | INFO | HILDEBRAND |   order=14da1915-8e74-47be-9e10-f7275d31af46
+2026-06-11 19:01:52 | INFO | HILDEBRAND | MESSAGE ACCEPTED
+2026-06-11 19:01:52 | INFO | HILDEBRAND | order=14da1915-8e74-47be-9e10-f7275d31af46
+2026-06-11 19:01:52 | INFO | HILDEBRAND | total=$63.22
+2026-06-11 19:01:52 | INFO | HILDEBRAND | consumed=3
+2026-06-11 19:01:52 | INFO | HILDEBRAND | RUNNING STATS
+2026-06-11 19:01:52 | INFO | HILDEBRAND | total_sales=$312.15
+2026-06-11 19:01:52 | INFO | HILDEBRAND | average=$104.05
+2026-06-11 19:01:52 | INFO | HILDEBRAND | min=$54.11
+2026-06-11 19:01:52 | INFO | HILDEBRAND | max=$194.82
+2026-06-11 19:01:52 | INFO | HILDEBRAND | {'currency_code': 'USD', 'customer_id': 'CUST-5333', 'customer_note': 'Highly recommend', 'datetime': '2026-05-04T08:40:00Z', 'device_type': 'mobile', 'discount_code': '', 'is_new_customer': 'false', 'is_online': 'true', 'order_id': 'd77ed935-9b28-431d-bc25-0a3fd98f4154', 'payment_method': 'paypal', 'product_id': 'PY-STREAM-005', 'quantity': '1', 'referral_source': 'organic', 'region_id': 'US-CA', 'unit_price': '59.99', '_kafka_key': 'US-CA', '_kafka_partition': 0, '_kafka_offset': 3}
+2026-06-11 19:01:52 | INFO | HILDEBRAND | subtotal=59.99
+2026-06-11 19:01:52 | INFO | HILDEBRAND | tax=5.7
+2026-06-11 19:01:52 | INFO | HILDEBRAND | total=65.69
+2026-06-11 19:01:52 | INFO | HILDEBRAND | running_total=377.84
+2026-06-11 19:01:52 | INFO | HILDEBRAND | discount_amount=0.0
+2026-06-11 19:01:52 | INFO | HILDEBRAND | is_high_value=False
+2026-06-11 19:01:52 | INFO | HILDEBRAND | Wrote valid record to DuckDB:
+2026-06-11 19:01:52 | INFO | HILDEBRAND |   order=d77ed935-9b28-431d-bc25-0a3fd98f4154
+2026-06-11 19:01:52 | INFO | HILDEBRAND | MESSAGE ACCEPTED
+2026-06-11 19:01:52 | INFO | HILDEBRAND | order=d77ed935-9b28-431d-bc25-0a3fd98f4154
+2026-06-11 19:01:52 | INFO | HILDEBRAND | total=$65.69
+2026-06-11 19:01:52 | INFO | HILDEBRAND | consumed=4
+2026-06-11 19:01:52 | INFO | HILDEBRAND | RUNNING STATS
+2026-06-11 19:01:52 | INFO | HILDEBRAND | total_sales=$377.84
+2026-06-11 19:01:52 | INFO | HILDEBRAND | average=$94.46
+2026-06-11 19:01:52 | INFO | HILDEBRAND | min=$54.11
+2026-06-11 19:01:52 | INFO | HILDEBRAND | max=$194.82
+2026-06-11 19:01:52 | INFO | HILDEBRAND | {'currency_code': 'USD', 'customer_id': 'CUST-8573', 'customer_note': 'Learning at my own pace', 'datetime': '2026-05-04T08:41:00Z', 'device_type': 'mobile', 'discount_code': '', 'is_new_customer': 'false', 'is_online': 'true', 'order_id': '24b91995-25f8-4ad7-8fa6-2e4c15750e5e', 'payment_method': 'apple_pay', 'product_id': 'PY-VIZ-003', 'quantity': '1', 'referral_source': 'paid_search', 'region_id': 'US-MO', 'unit_price': '39.99', '_kafka_key': 'US-MO', '_kafka_partition': 0, '_kafka_offset': 4}
+2026-06-11 19:01:52 | INFO | HILDEBRAND | subtotal=39.99
+2026-06-11 19:01:52 | INFO | HILDEBRAND | tax=3.2
+2026-06-11 19:01:52 | INFO | HILDEBRAND | total=43.19
+2026-06-11 19:01:52 | INFO | HILDEBRAND | running_total=421.03
+2026-06-11 19:01:52 | INFO | HILDEBRAND | discount_amount=0.0
+2026-06-11 19:01:52 | INFO | HILDEBRAND | is_high_value=False
+2026-06-11 19:01:52 | INFO | HILDEBRAND | Wrote valid record to DuckDB:
+2026-06-11 19:01:52 | INFO | HILDEBRAND |   order=24b91995-25f8-4ad7-8fa6-2e4c15750e5e
+2026-06-11 19:01:52 | INFO | HILDEBRAND | MESSAGE ACCEPTED
+2026-06-11 19:01:52 | INFO | HILDEBRAND | order=24b91995-25f8-4ad7-8fa6-2e4c15750e5e
+2026-06-11 19:01:52 | INFO | HILDEBRAND | total=$43.19
+2026-06-11 19:01:52 | INFO | HILDEBRAND | consumed=5
+2026-06-11 19:01:52 | INFO | HILDEBRAND | RUNNING STATS
+2026-06-11 19:01:52 | INFO | HILDEBRAND | total_sales=$421.03
+2026-06-11 19:01:52 | INFO | HILDEBRAND | average=$84.21
+2026-06-11 19:01:52 | INFO | HILDEBRAND | min=$43.19
+2026-06-11 19:01:52 | INFO | HILDEBRAND | max=$194.82
+2026-06-11 19:01:52 | INFO | HILDEBRAND | {'currency_code': 'CAD', 'customer_id': 'CUST-8062', 'customer_note': '', 'datetime': '2026-05-04T08:54:00Z', 'device_type': 'tablet', 'discount_code': '', 'is_new_customer': 'false', 'is_online': 'true', 'order_id': '1ec0fc8b-998c-4f43-8a66-19e1fa7d5fa8', 'payment_method': 'paypal', 'product_id': 'PY-SQL-004', 'quantity': '1', 'referral_source': 'organic', 'region_id': 'CA-ON', 'unit_price': '44.99', '_kafka_key': 'CA-ON', '_kafka_partition': 0, '_kafka_offset': 5}
+2026-06-11 19:01:52 | INFO | HILDEBRAND | subtotal=44.99
+2026-06-11 19:01:52 | INFO | HILDEBRAND | tax=5.85
+2026-06-11 19:01:52 | INFO | HILDEBRAND | total=50.84
+2026-06-11 19:01:52 | INFO | HILDEBRAND | running_total=471.87
+2026-06-11 19:01:52 | INFO | HILDEBRAND | discount_amount=0.0
+2026-06-11 19:01:52 | INFO | HILDEBRAND | is_high_value=False
+2026-06-11 19:01:52 | INFO | HILDEBRAND | Wrote valid record to DuckDB:
+2026-06-11 19:01:52 | INFO | HILDEBRAND |   order=1ec0fc8b-998c-4f43-8a66-19e1fa7d5fa8
+2026-06-11 19:01:52 | INFO | HILDEBRAND | MESSAGE ACCEPTED
+2026-06-11 19:01:52 | INFO | HILDEBRAND | order=1ec0fc8b-998c-4f43-8a66-19e1fa7d5fa8
+2026-06-11 19:01:52 | INFO | HILDEBRAND | total=$50.84
+2026-06-11 19:01:52 | INFO | HILDEBRAND | consumed=6
+2026-06-11 19:01:52 | INFO | HILDEBRAND | RUNNING STATS
+2026-06-11 19:01:52 | INFO | HILDEBRAND | total_sales=$471.87
+2026-06-11 19:01:52 | INFO | HILDEBRAND | average=$78.64
+2026-06-11 19:01:52 | INFO | HILDEBRAND | min=$43.19
+2026-06-11 19:01:52 | INFO | HILDEBRAND | max=$194.82
+2026-06-11 19:02:03 | INFO | HILDEBRAND | No message received within 10.0s timeout.
+2026-06-11 19:02:03 | INFO | HILDEBRAND | Producer finished or paused. Stopping consumer.
+2026-06-11 19:02:03 | INFO | HILDEBRAND | Kafka consumer closed.
+2026-06-11 19:02:03 | INFO | HILDEBRAND | Saving artifacts...
+2026-06-11 19:02:03 | INFO | HILDEBRAND | WROTE OUTPUT_CSV = data/output/consumed_sales.csv
+2026-06-11 19:02:03 | INFO | HILDEBRAND | WROTE OUTPUT_DB = data/output/sales.duckdb
+2026-06-11 19:02:03 | INFO | HILDEBRAND | ========================
+2026-06-11 19:02:03 | INFO | HILDEBRAND | SECTION E. Exit
+2026-06-11 19:02:03 | INFO | HILDEBRAND | ========================
+2026-06-11 19:02:03 | INFO | HILDEBRAND | Summary:
+2026-06-11 19:02:03 | INFO | HILDEBRAND | Consumed 6 message(s) from topic 'product-sales-case'.
+2026-06-11 19:02:03 | INFO | HILDEBRAND | Skipped  0 message(s).
+2026-06-11 19:02:03 | INFO | HILDEBRAND | OUTPUT_CSV = data/output/consumed_sales.csv
+2026-06-11 19:02:03 | INFO | HILDEBRAND |   Total sales:  $471.87
+2026-06-11 19:02:03 | INFO | HILDEBRAND |   Average sale: $78.64
+2026-06-11 19:02:03 | INFO | HILDEBRAND |   Minimum sale: $43.19
+2026-06-11 19:02:03 | INFO | HILDEBRAND |   Maximum sale: $194.82
+2026-06-11 19:02:03 | INFO | HILDEBRAND | ========================
+2026-06-11 19:02:03 | INFO | HILDEBRAND | Consumer executed successfully!
+2026-06-11 19:02:03 | INFO | HILDEBRAND | ========================
+2026-06-11 19:05:24 | DEBUG | HILDEBRAND | No variables found in .env
+2026-06-11 19:05:24 | INFO | HILDEBRAND | === RUN START ===
+2026-06-11 19:05:24 | INFO | HILDEBRAND | project=C05
+2026-06-11 19:05:24 | INFO | HILDEBRAND | repo_dir=streaming-05-storage
+2026-06-11 19:05:24 | INFO | HILDEBRAND | python=3.14.4
+2026-06-11 19:05:24 | INFO | HILDEBRAND | os=Linux 6.6.114.1-microsoft-standard-WSL2
+2026-06-11 19:05:24 | INFO | HILDEBRAND | shell=bash
+2026-06-11 19:05:24 | INFO | HILDEBRAND | cwd=.
+2026-06-11 19:05:24 | INFO | HILDEBRAND | github_actions=False
+2026-06-11 19:05:24 | INFO | HILDEBRAND | ========================
+2026-06-11 19:05:24 | INFO | HILDEBRAND | START consumer main()
+2026-06-11 19:05:24 | INFO | HILDEBRAND | ========================
+2026-06-11 19:05:24 | INFO | HILDEBRAND | ROOT_DIR = .
+2026-06-11 19:05:24 | INFO | HILDEBRAND | DATA_DIR = data
+2026-06-11 19:05:24 | INFO | HILDEBRAND | OUTPUT_CSV = data/output/hildebrand_high_value_sales.csv
+2026-06-11 19:05:24 | INFO | HILDEBRAND | OUTPUT_DB = data/output/hildebrand_high_value.duckdb
+2026-06-11 19:05:24 | INFO | HILDEBRAND | REGIONS_CSV = data/regions.csv
+2026-06-11 19:05:24 | INFO | HILDEBRAND | PRODUCTS_CSV = data/products.csv
+2026-06-11 19:05:24 | INFO | HILDEBRAND | CURRENCIES_CSV = data/currencies.csv
+2026-06-11 19:05:24 | INFO | HILDEBRAND | DISCOUNT_CODES_CSV = data/discount_codes.csv
+2026-06-11 19:05:24 | INFO | HILDEBRAND | ========================
+2026-06-11 19:05:24 | INFO | HILDEBRAND | SECTION A. Acquire
+2026-06-11 19:05:24 | INFO | HILDEBRAND | ========================
+2026-06-11 19:05:24 | INFO | HILDEBRAND | Loading settings from .env...
+2026-06-11 19:05:24 | INFO | HILDEBRAND | KAFKA_BOOTSTRAP_SERVERS  = localhost:9092
+2026-06-11 19:05:24 | INFO | HILDEBRAND | KAFKA_TOPIC              = product-sales-case
+2026-06-11 19:05:24 | INFO | HILDEBRAND | KAFKA_GROUP_ID           = streaming-consumer-group-A
+2026-06-11 19:05:24 | INFO | HILDEBRAND | CONSUMER_TIMEOUT_SECONDS = 10.0
+2026-06-11 19:05:24 | INFO | HILDEBRAND | CONSUMER_MAX_MESSAGES    = 1000
+2026-06-11 19:05:24 | INFO | HILDEBRAND | Verifying Kafka connection...
+2026-06-11 19:05:24 | INFO | HILDEBRAND | Kafka port is reachable.
+2026-06-11 19:05:24 | INFO | HILDEBRAND | Verifying Kafka topic...
+2026-06-11 19:05:24 | INFO | HILDEBRAND | Topic 'product-sales-case' exists.
+2026-06-11 19:05:24 | INFO | HILDEBRAND | Found 6 message(s) available.
+2026-06-11 19:05:24 | INFO | HILDEBRAND | Creating Kafka consumer...
+2026-06-11 19:05:24 | INFO | HILDEBRAND | Subscribed to topic: 'product-sales-case' (reading from beginning)
+2026-06-11 19:05:24 | INFO | HILDEBRAND | ========================
+2026-06-11 19:05:24 | INFO | HILDEBRAND | SECTION C. Consume and Process Messages
+2026-06-11 19:05:24 | INFO | HILDEBRAND | ========================
+2026-06-11 19:05:24 | INFO | HILDEBRAND | Initializing output...
+2026-06-11 19:05:24 | INFO | HILDEBRAND | Output CSV cleared: hildebrand_high_value_sales.csv
+2026-06-11 19:05:24 | INFO | HILDEBRAND | Database initialized: hildebrand_high_value.duckdb
+2026-06-11 19:05:24 | INFO | HILDEBRAND | Loading enrichment reference data...
+2026-06-11 19:05:24 | INFO | HILDEBRAND | Found 6 region tax rates.
+2026-06-11 19:05:24 | INFO | HILDEBRAND | Consuming messages...
+2026-06-11 19:05:24 | INFO | HILDEBRAND | Waiting for up to 1000 message(s).
+2026-06-11 19:05:24 | INFO | HILDEBRAND | Press CTRL+C to stop early.
+
+2026-06-11 19:05:24 | INFO | HILDEBRAND | {'currency_code': 'USD', 'customer_id': 'CUST-4150', 'customer_note': 'Gift for my team', 'datetime': '2026-05-04T08:11:00Z', 'device_type': 'tablet', 'discount_code': '', 'is_new_customer': 'false', 'is_online': 'true', 'order_id': 'e7324981-a9f0-419f-b708-d0a333451fff', 'payment_method': 'paypal', 'product_id': 'PY-STREAM-005', 'quantity': '3', 'referral_source': 'paid_search', 'region_id': 'US-TX', 'unit_price': '59.99', '_kafka_key': 'US-TX', '_kafka_partition': 0, '_kafka_offset': 0}
+2026-06-11 19:05:24 | INFO | HILDEBRAND | subtotal=179.97
+2026-06-11 19:05:24 | INFO | HILDEBRAND | tax=14.85
+2026-06-11 19:05:24 | INFO | HILDEBRAND | total=194.82
+2026-06-11 19:05:24 | INFO | HILDEBRAND | running_total=194.82
+2026-06-11 19:05:24 | INFO | HILDEBRAND | discount_amount=0.0
+2026-06-11 19:05:24 | INFO | HILDEBRAND | is_high_value=True
+2026-06-11 19:05:24 | INFO | HILDEBRAND | Wrote valid record to DuckDB:
+2026-06-11 19:05:24 | INFO | HILDEBRAND |   order=e7324981-a9f0-419f-b708-d0a333451fff
+2026-06-11 19:05:24 | INFO | HILDEBRAND | MESSAGE ACCEPTED
+2026-06-11 19:05:24 | INFO | HILDEBRAND | order=e7324981-a9f0-419f-b708-d0a333451fff
+2026-06-11 19:05:24 | INFO | HILDEBRAND | total=$194.82
+2026-06-11 19:05:24 | INFO | HILDEBRAND | consumed=1
+2026-06-11 19:05:24 | INFO | HILDEBRAND | RUNNING STATS
+2026-06-11 19:05:24 | INFO | HILDEBRAND | total_sales=$194.82
+2026-06-11 19:05:24 | INFO | HILDEBRAND | average=$194.82
+2026-06-11 19:05:24 | INFO | HILDEBRAND | min=$194.82
+2026-06-11 19:05:24 | INFO | HILDEBRAND | max=$194.82
+2026-06-11 19:05:24 | INFO | HILDEBRAND | {'currency_code': 'USD', 'customer_id': 'CUST-1106', 'customer_note': 'Gift for my team', 'datetime': '2026-05-04T08:23:00Z', 'device_type': 'mobile', 'discount_code': '', 'is_new_customer': 'false', 'is_online': 'true', 'order_id': 'd61943e0-f543-4b5f-9c9a-18605ea4cfe5', 'payment_method': 'paypal', 'product_id': 'PY-DATA-002', 'quantity': '1', 'referral_source': 'paid_search', 'region_id': 'US-TX', 'unit_price': '49.99', '_kafka_key': 'US-TX', '_kafka_partition': 0, '_kafka_offset': 1}
+2026-06-11 19:05:24 | INFO | HILDEBRAND | subtotal=49.99
+2026-06-11 19:05:24 | INFO | HILDEBRAND | tax=4.12
+2026-06-11 19:05:24 | INFO | HILDEBRAND | total=54.11
+2026-06-11 19:05:24 | INFO | HILDEBRAND | running_total=248.93
+2026-06-11 19:05:24 | INFO | HILDEBRAND | discount_amount=0.0
+2026-06-11 19:05:24 | INFO | HILDEBRAND | is_high_value=False
+2026-06-11 19:05:24 | INFO | HILDEBRAND | Wrote valid record to DuckDB:
+2026-06-11 19:05:24 | INFO | HILDEBRAND |   order=d61943e0-f543-4b5f-9c9a-18605ea4cfe5
+2026-06-11 19:05:24 | INFO | HILDEBRAND | MESSAGE ACCEPTED
+2026-06-11 19:05:24 | INFO | HILDEBRAND | order=d61943e0-f543-4b5f-9c9a-18605ea4cfe5
+2026-06-11 19:05:24 | INFO | HILDEBRAND | total=$54.11
+2026-06-11 19:05:24 | INFO | HILDEBRAND | consumed=2
+2026-06-11 19:05:24 | INFO | HILDEBRAND | RUNNING STATS
+2026-06-11 19:05:24 | INFO | HILDEBRAND | total_sales=$248.93
+2026-06-11 19:05:24 | INFO | HILDEBRAND | average=$124.47
+2026-06-11 19:05:24 | INFO | HILDEBRAND | min=$54.11
+2026-06-11 19:05:24 | INFO | HILDEBRAND | max=$194.82
+2026-06-11 19:05:24 | INFO | HILDEBRAND | {'currency_code': 'CAD', 'customer_id': 'CUST-2133', 'customer_note': 'Learning at my own pace', 'datetime': '2026-05-04T08:28:00Z', 'device_type': 'desktop', 'discount_code': '', 'is_new_customer': 'false', 'is_online': 'true', 'order_id': '14da1915-8e74-47be-9e10-f7275d31af46', 'payment_method': 'paypal', 'product_id': 'PY-NLP-006', 'quantity': '1', 'referral_source': 'organic', 'region_id': 'CA-QC', 'unit_price': '54.99', '_kafka_key': 'CA-QC', '_kafka_partition': 0, '_kafka_offset': 2}
+2026-06-11 19:05:24 | INFO | HILDEBRAND | subtotal=54.99
+2026-06-11 19:05:24 | INFO | HILDEBRAND | tax=8.23
+2026-06-11 19:05:24 | INFO | HILDEBRAND | total=63.22
+2026-06-11 19:05:24 | INFO | HILDEBRAND | running_total=312.15
+2026-06-11 19:05:24 | INFO | HILDEBRAND | discount_amount=0.0
+2026-06-11 19:05:24 | INFO | HILDEBRAND | is_high_value=False
+2026-06-11 19:05:24 | INFO | HILDEBRAND | Wrote valid record to DuckDB:
+2026-06-11 19:05:24 | INFO | HILDEBRAND |   order=14da1915-8e74-47be-9e10-f7275d31af46
+2026-06-11 19:05:24 | INFO | HILDEBRAND | MESSAGE ACCEPTED
+2026-06-11 19:05:24 | INFO | HILDEBRAND | order=14da1915-8e74-47be-9e10-f7275d31af46
+2026-06-11 19:05:24 | INFO | HILDEBRAND | total=$63.22
+2026-06-11 19:05:24 | INFO | HILDEBRAND | consumed=3
+2026-06-11 19:05:24 | INFO | HILDEBRAND | RUNNING STATS
+2026-06-11 19:05:24 | INFO | HILDEBRAND | total_sales=$312.15
+2026-06-11 19:05:24 | INFO | HILDEBRAND | average=$104.05
+2026-06-11 19:05:24 | INFO | HILDEBRAND | min=$54.11
+2026-06-11 19:05:24 | INFO | HILDEBRAND | max=$194.82
+2026-06-11 19:05:24 | INFO | HILDEBRAND | {'currency_code': 'USD', 'customer_id': 'CUST-5333', 'customer_note': 'Highly recommend', 'datetime': '2026-05-04T08:40:00Z', 'device_type': 'mobile', 'discount_code': '', 'is_new_customer': 'false', 'is_online': 'true', 'order_id': 'd77ed935-9b28-431d-bc25-0a3fd98f4154', 'payment_method': 'paypal', 'product_id': 'PY-STREAM-005', 'quantity': '1', 'referral_source': 'organic', 'region_id': 'US-CA', 'unit_price': '59.99', '_kafka_key': 'US-CA', '_kafka_partition': 0, '_kafka_offset': 3}
+2026-06-11 19:05:24 | INFO | HILDEBRAND | subtotal=59.99
+2026-06-11 19:05:24 | INFO | HILDEBRAND | tax=5.7
+2026-06-11 19:05:24 | INFO | HILDEBRAND | total=65.69
+2026-06-11 19:05:24 | INFO | HILDEBRAND | running_total=377.84
+2026-06-11 19:05:24 | INFO | HILDEBRAND | discount_amount=0.0
+2026-06-11 19:05:24 | INFO | HILDEBRAND | is_high_value=False
+2026-06-11 19:05:25 | INFO | HILDEBRAND | Wrote valid record to DuckDB:
+2026-06-11 19:05:25 | INFO | HILDEBRAND |   order=d77ed935-9b28-431d-bc25-0a3fd98f4154
+2026-06-11 19:05:25 | INFO | HILDEBRAND | MESSAGE ACCEPTED
+2026-06-11 19:05:25 | INFO | HILDEBRAND | order=d77ed935-9b28-431d-bc25-0a3fd98f4154
+2026-06-11 19:05:25 | INFO | HILDEBRAND | total=$65.69
+2026-06-11 19:05:25 | INFO | HILDEBRAND | consumed=4
+2026-06-11 19:05:25 | INFO | HILDEBRAND | RUNNING STATS
+2026-06-11 19:05:25 | INFO | HILDEBRAND | total_sales=$377.84
+2026-06-11 19:05:25 | INFO | HILDEBRAND | average=$94.46
+2026-06-11 19:05:25 | INFO | HILDEBRAND | min=$54.11
+2026-06-11 19:05:25 | INFO | HILDEBRAND | max=$194.82
+2026-06-11 19:05:25 | INFO | HILDEBRAND | {'currency_code': 'USD', 'customer_id': 'CUST-8573', 'customer_note': 'Learning at my own pace', 'datetime': '2026-05-04T08:41:00Z', 'device_type': 'mobile', 'discount_code': '', 'is_new_customer': 'false', 'is_online': 'true', 'order_id': '24b91995-25f8-4ad7-8fa6-2e4c15750e5e', 'payment_method': 'apple_pay', 'product_id': 'PY-VIZ-003', 'quantity': '1', 'referral_source': 'paid_search', 'region_id': 'US-MO', 'unit_price': '39.99', '_kafka_key': 'US-MO', '_kafka_partition': 0, '_kafka_offset': 4}
+2026-06-11 19:05:25 | INFO | HILDEBRAND | subtotal=39.99
+2026-06-11 19:05:25 | INFO | HILDEBRAND | tax=3.2
+2026-06-11 19:05:25 | INFO | HILDEBRAND | total=43.19
+2026-06-11 19:05:25 | INFO | HILDEBRAND | running_total=421.03
+2026-06-11 19:05:25 | INFO | HILDEBRAND | discount_amount=0.0
+2026-06-11 19:05:25 | INFO | HILDEBRAND | is_high_value=False
+2026-06-11 19:05:25 | INFO | HILDEBRAND | Wrote valid record to DuckDB:
+2026-06-11 19:05:25 | INFO | HILDEBRAND |   order=24b91995-25f8-4ad7-8fa6-2e4c15750e5e
+2026-06-11 19:05:25 | INFO | HILDEBRAND | MESSAGE ACCEPTED
+2026-06-11 19:05:25 | INFO | HILDEBRAND | order=24b91995-25f8-4ad7-8fa6-2e4c15750e5e
+2026-06-11 19:05:25 | INFO | HILDEBRAND | total=$43.19
+2026-06-11 19:05:25 | INFO | HILDEBRAND | consumed=5
+2026-06-11 19:05:25 | INFO | HILDEBRAND | RUNNING STATS
+2026-06-11 19:05:25 | INFO | HILDEBRAND | total_sales=$421.03
+2026-06-11 19:05:25 | INFO | HILDEBRAND | average=$84.21
+2026-06-11 19:05:25 | INFO | HILDEBRAND | min=$43.19
+2026-06-11 19:05:25 | INFO | HILDEBRAND | max=$194.82
+2026-06-11 19:05:25 | INFO | HILDEBRAND | {'currency_code': 'CAD', 'customer_id': 'CUST-8062', 'customer_note': '', 'datetime': '2026-05-04T08:54:00Z', 'device_type': 'tablet', 'discount_code': '', 'is_new_customer': 'false', 'is_online': 'true', 'order_id': '1ec0fc8b-998c-4f43-8a66-19e1fa7d5fa8', 'payment_method': 'paypal', 'product_id': 'PY-SQL-004', 'quantity': '1', 'referral_source': 'organic', 'region_id': 'CA-ON', 'unit_price': '44.99', '_kafka_key': 'CA-ON', '_kafka_partition': 0, '_kafka_offset': 5}
+2026-06-11 19:05:25 | INFO | HILDEBRAND | subtotal=44.99
+2026-06-11 19:05:25 | INFO | HILDEBRAND | tax=5.85
+2026-06-11 19:05:25 | INFO | HILDEBRAND | total=50.84
+2026-06-11 19:05:25 | INFO | HILDEBRAND | running_total=471.87
+2026-06-11 19:05:25 | INFO | HILDEBRAND | discount_amount=0.0
+2026-06-11 19:05:25 | INFO | HILDEBRAND | is_high_value=False
+2026-06-11 19:05:25 | INFO | HILDEBRAND | Wrote valid record to DuckDB:
+2026-06-11 19:05:25 | INFO | HILDEBRAND |   order=1ec0fc8b-998c-4f43-8a66-19e1fa7d5fa8
+2026-06-11 19:05:25 | INFO | HILDEBRAND | MESSAGE ACCEPTED
+2026-06-11 19:05:25 | INFO | HILDEBRAND | order=1ec0fc8b-998c-4f43-8a66-19e1fa7d5fa8
+2026-06-11 19:05:25 | INFO | HILDEBRAND | total=$50.84
+2026-06-11 19:05:25 | INFO | HILDEBRAND | consumed=6
+2026-06-11 19:05:25 | INFO | HILDEBRAND | RUNNING STATS
+2026-06-11 19:05:25 | INFO | HILDEBRAND | total_sales=$471.87
+2026-06-11 19:05:25 | INFO | HILDEBRAND | average=$78.64
+2026-06-11 19:05:25 | INFO | HILDEBRAND | min=$43.19
+2026-06-11 19:05:25 | INFO | HILDEBRAND | max=$194.82
+2026-06-11 19:05:35 | INFO | HILDEBRAND | No message received within 10.0s timeout.
+2026-06-11 19:05:35 | INFO | HILDEBRAND | Producer finished or paused. Stopping consumer.
+2026-06-11 19:05:35 | INFO | HILDEBRAND | Kafka consumer closed.
+2026-06-11 19:05:35 | INFO | HILDEBRAND | Saving artifacts...
+2026-06-11 19:05:35 | INFO | HILDEBRAND | WROTE OUTPUT_CSV = data/output/hildebrand_high_value_sales.csv
+2026-06-11 19:05:35 | INFO | HILDEBRAND | WROTE OUTPUT_DB = data/output/hildebrand_high_value.duckdb
+2026-06-11 19:05:35 | INFO | HILDEBRAND | ========================
+2026-06-11 19:05:35 | INFO | HILDEBRAND | SECTION E. Exit
+2026-06-11 19:05:35 | INFO | HILDEBRAND | ========================
+2026-06-11 19:05:35 | INFO | HILDEBRAND | Summary:
+2026-06-11 19:05:35 | INFO | HILDEBRAND | Consumed 6 message(s) from topic 'product-sales-case'.
+2026-06-11 19:05:35 | INFO | HILDEBRAND | Skipped  0 message(s).
+2026-06-11 19:05:35 | INFO | HILDEBRAND | OUTPUT_CSV = data/output/hildebrand_high_value_sales.csv
+2026-06-11 19:05:35 | INFO | HILDEBRAND |   Total sales:  $471.87
+2026-06-11 19:05:35 | INFO | HILDEBRAND |   Average sale: $78.64
+2026-06-11 19:05:35 | INFO | HILDEBRAND |   Minimum sale: $43.19
+2026-06-11 19:05:35 | INFO | HILDEBRAND |   Maximum sale: $194.82
+2026-06-11 19:05:35 | INFO | HILDEBRAND | ========================
+2026-06-11 19:05:35 | INFO | HILDEBRAND | Consumer executed successfully!
+2026-06-11 19:05:35 | INFO | HILDEBRAND | ========================
+2026-06-11 19:25:01 | DEBUG | HILDEBRAND | No variables found in .env
+2026-06-11 19:25:01 | INFO | HILDEBRAND | === RUN START ===
+2026-06-11 19:25:01 | INFO | HILDEBRAND | project=C05
+2026-06-11 19:25:01 | INFO | HILDEBRAND | repo_dir=streaming-05-storage
+2026-06-11 19:25:01 | INFO | HILDEBRAND | python=3.14.4
+2026-06-11 19:25:01 | INFO | HILDEBRAND | os=Linux 6.6.114.1-microsoft-standard-WSL2
+2026-06-11 19:25:01 | INFO | HILDEBRAND | shell=bash
+2026-06-11 19:25:01 | INFO | HILDEBRAND | cwd=.
+2026-06-11 19:25:01 | INFO | HILDEBRAND | github_actions=False
+2026-06-11 19:25:01 | INFO | HILDEBRAND | ========================
+2026-06-11 19:25:01 | INFO | HILDEBRAND | START consumer main()
+2026-06-11 19:25:01 | INFO | HILDEBRAND | ========================
+2026-06-11 19:25:01 | INFO | HILDEBRAND | ROOT_DIR = .
+2026-06-11 19:25:01 | INFO | HILDEBRAND | DATA_DIR = data
+2026-06-11 19:25:01 | INFO | HILDEBRAND | OUTPUT_CSV = data/output/hildebrand_high_value_sales.csv
+2026-06-11 19:25:01 | INFO | HILDEBRAND | OUTPUT_DB = data/output/hildebrand_high_value.duckdb
+2026-06-11 19:25:01 | INFO | HILDEBRAND | REGIONS_CSV = data/regions.csv
+2026-06-11 19:25:01 | INFO | HILDEBRAND | PRODUCTS_CSV = data/products.csv
+2026-06-11 19:25:01 | INFO | HILDEBRAND | CURRENCIES_CSV = data/currencies.csv
+2026-06-11 19:25:01 | INFO | HILDEBRAND | DISCOUNT_CODES_CSV = data/discount_codes.csv
+2026-06-11 19:25:01 | INFO | HILDEBRAND | ========================
+2026-06-11 19:25:01 | INFO | HILDEBRAND | SECTION A. Acquire
+2026-06-11 19:25:01 | INFO | HILDEBRAND | ========================
+2026-06-11 19:25:01 | INFO | HILDEBRAND | Loading settings from .env...
+2026-06-11 19:25:01 | INFO | HILDEBRAND | KAFKA_BOOTSTRAP_SERVERS  = localhost:9092
+2026-06-11 19:25:01 | INFO | HILDEBRAND | KAFKA_TOPIC              = product-sales-case
+2026-06-11 19:25:01 | INFO | HILDEBRAND | KAFKA_GROUP_ID           = streaming-consumer-group-A
+2026-06-11 19:25:01 | INFO | HILDEBRAND | CONSUMER_TIMEOUT_SECONDS = 10.0
+2026-06-11 19:25:01 | INFO | HILDEBRAND | CONSUMER_MAX_MESSAGES    = 1000
+2026-06-11 19:25:01 | INFO | HILDEBRAND | Verifying Kafka connection...
+2026-06-11 19:25:01 | INFO | HILDEBRAND | Kafka port is reachable.
+2026-06-11 19:25:01 | INFO | HILDEBRAND | Verifying Kafka topic...
+2026-06-11 19:25:01 | INFO | HILDEBRAND | Topic 'product-sales-case' exists.
+2026-06-11 19:25:01 | INFO | HILDEBRAND | Found 6 message(s) available.
+2026-06-11 19:25:01 | INFO | HILDEBRAND | Creating Kafka consumer...
+2026-06-11 19:25:01 | INFO | HILDEBRAND | Subscribed to topic: 'product-sales-case' (reading from beginning)
+2026-06-11 19:25:01 | INFO | HILDEBRAND | ========================
+2026-06-11 19:25:01 | INFO | HILDEBRAND | SECTION C. Consume and Process Messages
+2026-06-11 19:25:01 | INFO | HILDEBRAND | ========================
+2026-06-11 19:25:01 | INFO | HILDEBRAND | Initializing output...
+2026-06-11 19:25:01 | INFO | HILDEBRAND | Output CSV cleared: hildebrand_high_value_sales.csv
+2026-06-11 19:25:02 | INFO | HILDEBRAND | Database initialized: hildebrand_high_value.duckdb
+2026-06-11 19:25:02 | INFO | HILDEBRAND | Loading enrichment reference data...
+2026-06-11 19:25:02 | INFO | HILDEBRAND | Found 6 region tax rates.
+2026-06-11 19:25:02 | INFO | HILDEBRAND | Consuming messages...
+2026-06-11 19:25:02 | INFO | HILDEBRAND | Waiting for up to 1000 message(s).
+2026-06-11 19:25:02 | INFO | HILDEBRAND | Press CTRL+C to stop early.
+
+2026-06-11 19:25:02 | INFO | HILDEBRAND | {'currency_code': 'USD', 'customer_id': 'CUST-4150', 'customer_note': 'Gift for my team', 'datetime': '2026-05-04T08:11:00Z', 'device_type': 'tablet', 'discount_code': '', 'is_new_customer': 'false', 'is_online': 'true', 'order_id': 'e7324981-a9f0-419f-b708-d0a333451fff', 'payment_method': 'paypal', 'product_id': 'PY-STREAM-005', 'quantity': '3', 'referral_source': 'paid_search', 'region_id': 'US-TX', 'unit_price': '59.99', '_kafka_key': 'US-TX', '_kafka_partition': 0, '_kafka_offset': 0}
+2026-06-11 19:25:02 | INFO | HILDEBRAND | subtotal=179.97
+2026-06-11 19:25:02 | INFO | HILDEBRAND | tax=14.85
+2026-06-11 19:25:02 | INFO | HILDEBRAND | total=194.82
+2026-06-11 19:25:02 | INFO | HILDEBRAND | running_total=194.82
+2026-06-11 19:25:02 | INFO | HILDEBRAND | discount_amount=0.0
+2026-06-11 19:25:02 | INFO | HILDEBRAND | is_high_value=True
+2026-06-11 19:25:02 | INFO | HILDEBRAND | Wrote valid record to DuckDB:
+2026-06-11 19:25:02 | INFO | HILDEBRAND |   order=e7324981-a9f0-419f-b708-d0a333451fff
+2026-06-11 19:25:02 | INFO | HILDEBRAND | MESSAGE ACCEPTED
+2026-06-11 19:25:02 | INFO | HILDEBRAND | order=e7324981-a9f0-419f-b708-d0a333451fff
+2026-06-11 19:25:02 | INFO | HILDEBRAND | total=$194.82
+2026-06-11 19:25:02 | INFO | HILDEBRAND | consumed=1
+2026-06-11 19:25:02 | INFO | HILDEBRAND | RUNNING STATS
+2026-06-11 19:25:02 | INFO | HILDEBRAND | total_sales=$194.82
+2026-06-11 19:25:02 | INFO | HILDEBRAND | average=$194.82
+2026-06-11 19:25:02 | INFO | HILDEBRAND | min=$194.82
+2026-06-11 19:25:02 | INFO | HILDEBRAND | max=$194.82
+2026-06-11 19:25:02 | INFO | HILDEBRAND | {'currency_code': 'USD', 'customer_id': 'CUST-1106', 'customer_note': 'Gift for my team', 'datetime': '2026-05-04T08:23:00Z', 'device_type': 'mobile', 'discount_code': '', 'is_new_customer': 'false', 'is_online': 'true', 'order_id': 'd61943e0-f543-4b5f-9c9a-18605ea4cfe5', 'payment_method': 'paypal', 'product_id': 'PY-DATA-002', 'quantity': '1', 'referral_source': 'paid_search', 'region_id': 'US-TX', 'unit_price': '49.99', '_kafka_key': 'US-TX', '_kafka_partition': 0, '_kafka_offset': 1}
+2026-06-11 19:25:02 | INFO | HILDEBRAND | subtotal=49.99
+2026-06-11 19:25:02 | INFO | HILDEBRAND | tax=4.12
+2026-06-11 19:25:02 | INFO | HILDEBRAND | total=54.11
+2026-06-11 19:25:02 | INFO | HILDEBRAND | running_total=248.93
+2026-06-11 19:25:02 | INFO | HILDEBRAND | discount_amount=0.0
+2026-06-11 19:25:02 | INFO | HILDEBRAND | is_high_value=False
+2026-06-11 19:25:02 | INFO | HILDEBRAND | Wrote valid record to DuckDB:
+2026-06-11 19:25:02 | INFO | HILDEBRAND |   order=d61943e0-f543-4b5f-9c9a-18605ea4cfe5
+2026-06-11 19:25:02 | INFO | HILDEBRAND | MESSAGE ACCEPTED
+2026-06-11 19:25:02 | INFO | HILDEBRAND | order=d61943e0-f543-4b5f-9c9a-18605ea4cfe5
+2026-06-11 19:25:02 | INFO | HILDEBRAND | total=$54.11
+2026-06-11 19:25:02 | INFO | HILDEBRAND | consumed=2
+2026-06-11 19:25:02 | INFO | HILDEBRAND | RUNNING STATS
+2026-06-11 19:25:02 | INFO | HILDEBRAND | total_sales=$248.93
+2026-06-11 19:25:02 | INFO | HILDEBRAND | average=$124.47
+2026-06-11 19:25:02 | INFO | HILDEBRAND | min=$54.11
+2026-06-11 19:25:02 | INFO | HILDEBRAND | max=$194.82
+2026-06-11 19:25:02 | INFO | HILDEBRAND | {'currency_code': 'CAD', 'customer_id': 'CUST-2133', 'customer_note': 'Learning at my own pace', 'datetime': '2026-05-04T08:28:00Z', 'device_type': 'desktop', 'discount_code': '', 'is_new_customer': 'false', 'is_online': 'true', 'order_id': '14da1915-8e74-47be-9e10-f7275d31af46', 'payment_method': 'paypal', 'product_id': 'PY-NLP-006', 'quantity': '1', 'referral_source': 'organic', 'region_id': 'CA-QC', 'unit_price': '54.99', '_kafka_key': 'CA-QC', '_kafka_partition': 0, '_kafka_offset': 2}
+2026-06-11 19:25:02 | INFO | HILDEBRAND | subtotal=54.99
+2026-06-11 19:25:02 | INFO | HILDEBRAND | tax=8.23
+2026-06-11 19:25:02 | INFO | HILDEBRAND | total=63.22
+2026-06-11 19:25:02 | INFO | HILDEBRAND | running_total=312.15
+2026-06-11 19:25:02 | INFO | HILDEBRAND | discount_amount=0.0
+2026-06-11 19:25:02 | INFO | HILDEBRAND | is_high_value=False
+2026-06-11 19:25:02 | INFO | HILDEBRAND | Wrote valid record to DuckDB:
+2026-06-11 19:25:02 | INFO | HILDEBRAND |   order=14da1915-8e74-47be-9e10-f7275d31af46
+2026-06-11 19:25:02 | INFO | HILDEBRAND | MESSAGE ACCEPTED
+2026-06-11 19:25:02 | INFO | HILDEBRAND | order=14da1915-8e74-47be-9e10-f7275d31af46
+2026-06-11 19:25:02 | INFO | HILDEBRAND | total=$63.22
+2026-06-11 19:25:02 | INFO | HILDEBRAND | consumed=3
+2026-06-11 19:25:02 | INFO | HILDEBRAND | RUNNING STATS
+2026-06-11 19:25:02 | INFO | HILDEBRAND | total_sales=$312.15
+2026-06-11 19:25:02 | INFO | HILDEBRAND | average=$104.05
+2026-06-11 19:25:02 | INFO | HILDEBRAND | min=$54.11
+2026-06-11 19:25:02 | INFO | HILDEBRAND | max=$194.82
+2026-06-11 19:25:02 | INFO | HILDEBRAND | {'currency_code': 'USD', 'customer_id': 'CUST-5333', 'customer_note': 'Highly recommend', 'datetime': '2026-05-04T08:40:00Z', 'device_type': 'mobile', 'discount_code': '', 'is_new_customer': 'false', 'is_online': 'true', 'order_id': 'd77ed935-9b28-431d-bc25-0a3fd98f4154', 'payment_method': 'paypal', 'product_id': 'PY-STREAM-005', 'quantity': '1', 'referral_source': 'organic', 'region_id': 'US-CA', 'unit_price': '59.99', '_kafka_key': 'US-CA', '_kafka_partition': 0, '_kafka_offset': 3}
+2026-06-11 19:25:02 | INFO | HILDEBRAND | subtotal=59.99
+2026-06-11 19:25:02 | INFO | HILDEBRAND | tax=5.7
+2026-06-11 19:25:02 | INFO | HILDEBRAND | total=65.69
+2026-06-11 19:25:02 | INFO | HILDEBRAND | running_total=377.84
+2026-06-11 19:25:02 | INFO | HILDEBRAND | discount_amount=0.0
+2026-06-11 19:25:02 | INFO | HILDEBRAND | is_high_value=False
+2026-06-11 19:25:02 | INFO | HILDEBRAND | Wrote valid record to DuckDB:
+2026-06-11 19:25:02 | INFO | HILDEBRAND |   order=d77ed935-9b28-431d-bc25-0a3fd98f4154
+2026-06-11 19:25:02 | INFO | HILDEBRAND | MESSAGE ACCEPTED
+2026-06-11 19:25:02 | INFO | HILDEBRAND | order=d77ed935-9b28-431d-bc25-0a3fd98f4154
+2026-06-11 19:25:02 | INFO | HILDEBRAND | total=$65.69
+2026-06-11 19:25:02 | INFO | HILDEBRAND | consumed=4
+2026-06-11 19:25:02 | INFO | HILDEBRAND | RUNNING STATS
+2026-06-11 19:25:02 | INFO | HILDEBRAND | total_sales=$377.84
+2026-06-11 19:25:02 | INFO | HILDEBRAND | average=$94.46
+2026-06-11 19:25:02 | INFO | HILDEBRAND | min=$54.11
+2026-06-11 19:25:02 | INFO | HILDEBRAND | max=$194.82
+2026-06-11 19:25:02 | INFO | HILDEBRAND | {'currency_code': 'USD', 'customer_id': 'CUST-8573', 'customer_note': 'Learning at my own pace', 'datetime': '2026-05-04T08:41:00Z', 'device_type': 'mobile', 'discount_code': '', 'is_new_customer': 'false', 'is_online': 'true', 'order_id': '24b91995-25f8-4ad7-8fa6-2e4c15750e5e', 'payment_method': 'apple_pay', 'product_id': 'PY-VIZ-003', 'quantity': '1', 'referral_source': 'paid_search', 'region_id': 'US-MO', 'unit_price': '39.99', '_kafka_key': 'US-MO', '_kafka_partition': 0, '_kafka_offset': 4}
+2026-06-11 19:25:02 | INFO | HILDEBRAND | subtotal=39.99
+2026-06-11 19:25:02 | INFO | HILDEBRAND | tax=3.2
+2026-06-11 19:25:02 | INFO | HILDEBRAND | total=43.19
+2026-06-11 19:25:02 | INFO | HILDEBRAND | running_total=421.03
+2026-06-11 19:25:02 | INFO | HILDEBRAND | discount_amount=0.0
+2026-06-11 19:25:02 | INFO | HILDEBRAND | is_high_value=False
+2026-06-11 19:25:03 | INFO | HILDEBRAND | Wrote valid record to DuckDB:
+2026-06-11 19:25:03 | INFO | HILDEBRAND |   order=24b91995-25f8-4ad7-8fa6-2e4c15750e5e
+2026-06-11 19:25:03 | INFO | HILDEBRAND | MESSAGE ACCEPTED
+2026-06-11 19:25:03 | INFO | HILDEBRAND | order=24b91995-25f8-4ad7-8fa6-2e4c15750e5e
+2026-06-11 19:25:03 | INFO | HILDEBRAND | total=$43.19
+2026-06-11 19:25:03 | INFO | HILDEBRAND | consumed=5
+2026-06-11 19:25:03 | INFO | HILDEBRAND | RUNNING STATS
+2026-06-11 19:25:03 | INFO | HILDEBRAND | total_sales=$421.03
+2026-06-11 19:25:03 | INFO | HILDEBRAND | average=$84.21
+2026-06-11 19:25:03 | INFO | HILDEBRAND | min=$43.19
+2026-06-11 19:25:03 | INFO | HILDEBRAND | max=$194.82
+2026-06-11 19:25:03 | INFO | HILDEBRAND | {'currency_code': 'CAD', 'customer_id': 'CUST-8062', 'customer_note': '', 'datetime': '2026-05-04T08:54:00Z', 'device_type': 'tablet', 'discount_code': '', 'is_new_customer': 'false', 'is_online': 'true', 'order_id': '1ec0fc8b-998c-4f43-8a66-19e1fa7d5fa8', 'payment_method': 'paypal', 'product_id': 'PY-SQL-004', 'quantity': '1', 'referral_source': 'organic', 'region_id': 'CA-ON', 'unit_price': '44.99', '_kafka_key': 'CA-ON', '_kafka_partition': 0, '_kafka_offset': 5}
+2026-06-11 19:25:03 | INFO | HILDEBRAND | subtotal=44.99
+2026-06-11 19:25:03 | INFO | HILDEBRAND | tax=5.85
+2026-06-11 19:25:03 | INFO | HILDEBRAND | total=50.84
+2026-06-11 19:25:03 | INFO | HILDEBRAND | running_total=471.87
+2026-06-11 19:25:03 | INFO | HILDEBRAND | discount_amount=0.0
+2026-06-11 19:25:03 | INFO | HILDEBRAND | is_high_value=False
+2026-06-11 19:25:03 | INFO | HILDEBRAND | Wrote valid record to DuckDB:
+2026-06-11 19:25:03 | INFO | HILDEBRAND |   order=1ec0fc8b-998c-4f43-8a66-19e1fa7d5fa8
+2026-06-11 19:25:03 | INFO | HILDEBRAND | MESSAGE ACCEPTED
+2026-06-11 19:25:03 | INFO | HILDEBRAND | order=1ec0fc8b-998c-4f43-8a66-19e1fa7d5fa8
+2026-06-11 19:25:03 | INFO | HILDEBRAND | total=$50.84
+2026-06-11 19:25:03 | INFO | HILDEBRAND | consumed=6
+2026-06-11 19:25:03 | INFO | HILDEBRAND | RUNNING STATS
+2026-06-11 19:25:03 | INFO | HILDEBRAND | total_sales=$471.87
+2026-06-11 19:25:03 | INFO | HILDEBRAND | average=$78.64
+2026-06-11 19:25:03 | INFO | HILDEBRAND | min=$43.19
+2026-06-11 19:25:03 | INFO | HILDEBRAND | max=$194.82
+2026-06-11 19:25:13 | INFO | HILDEBRAND | No message received within 10.0s timeout.
+2026-06-11 19:25:13 | INFO | HILDEBRAND | Producer finished or paused. Stopping consumer.
+2026-06-11 19:25:13 | INFO | HILDEBRAND | Kafka consumer closed.
+2026-06-11 19:25:13 | INFO | HILDEBRAND | Saving artifacts...
+2026-06-11 19:25:13 | INFO | HILDEBRAND | WROTE OUTPUT_CSV = data/output/hildebrand_high_value_sales.csv
+2026-06-11 19:25:13 | INFO | HILDEBRAND | WROTE OUTPUT_DB = data/output/hildebrand_high_value.duckdb
+2026-06-11 19:25:13 | INFO | HILDEBRAND | ========================
+2026-06-11 19:25:13 | INFO | HILDEBRAND | SECTION E. Exit
+2026-06-11 19:25:13 | INFO | HILDEBRAND | ========================
+2026-06-11 19:25:13 | INFO | HILDEBRAND | Summary:
+2026-06-11 19:25:13 | INFO | HILDEBRAND | Consumed 6 message(s) from topic 'product-sales-case'.
+2026-06-11 19:25:13 | INFO | HILDEBRAND | Skipped  0 message(s).
+2026-06-11 19:25:13 | INFO | HILDEBRAND | OUTPUT_CSV = data/output/hildebrand_high_value_sales.csv
+2026-06-11 19:25:13 | INFO | HILDEBRAND |   Total sales:  $471.87
+2026-06-11 19:25:13 | INFO | HILDEBRAND |   Average sale: $78.64
+2026-06-11 19:25:13 | INFO | HILDEBRAND |   Minimum sale: $43.19
+2026-06-11 19:25:13 | INFO | HILDEBRAND |   Maximum sale: $194.82
+2026-06-11 19:25:13 | INFO | HILDEBRAND | ========================
+2026-06-11 19:25:13 | INFO | HILDEBRAND | Consumer executed successfully!
+2026-06-11 19:25:13 | INFO | HILDEBRAND | ========================
+2026-06-11 19:28:12 | DEBUG | HILDEBRAND | No variables found in .env
+2026-06-11 19:28:12 | INFO | HILDEBRAND | === RUN START ===
+2026-06-11 19:28:12 | INFO | HILDEBRAND | project=C05
+2026-06-11 19:28:12 | INFO | HILDEBRAND | repo_dir=streaming-05-storage
+2026-06-11 19:28:12 | INFO | HILDEBRAND | python=3.14.4
+2026-06-11 19:28:12 | INFO | HILDEBRAND | os=Linux 6.6.114.1-microsoft-standard-WSL2
+2026-06-11 19:28:12 | INFO | HILDEBRAND | shell=bash
+2026-06-11 19:28:12 | INFO | HILDEBRAND | cwd=.
+2026-06-11 19:28:12 | INFO | HILDEBRAND | github_actions=False
+2026-06-11 19:28:12 | INFO | HILDEBRAND | ========================
+2026-06-11 19:28:12 | INFO | HILDEBRAND | START consumer main()
+2026-06-11 19:28:12 | INFO | HILDEBRAND | ========================
+2026-06-11 19:28:12 | INFO | HILDEBRAND | ROOT_DIR = .
+2026-06-11 19:28:12 | INFO | HILDEBRAND | DATA_DIR = data
+2026-06-11 19:28:12 | INFO | HILDEBRAND | OUTPUT_CSV = data/output/hildebrand_high_value_sales.csv
+2026-06-11 19:28:12 | INFO | HILDEBRAND | OUTPUT_DB = data/output/hildebrand_high_value.duckdb
+2026-06-11 19:28:12 | INFO | HILDEBRAND | REGIONS_CSV = data/regions.csv
+2026-06-11 19:28:12 | INFO | HILDEBRAND | PRODUCTS_CSV = data/products.csv
+2026-06-11 19:28:12 | INFO | HILDEBRAND | CURRENCIES_CSV = data/currencies.csv
+2026-06-11 19:28:12 | INFO | HILDEBRAND | DISCOUNT_CODES_CSV = data/discount_codes.csv
+2026-06-11 19:28:12 | INFO | HILDEBRAND | ========================
+2026-06-11 19:28:12 | INFO | HILDEBRAND | SECTION A. Acquire
+2026-06-11 19:28:12 | INFO | HILDEBRAND | ========================
+2026-06-11 19:28:12 | INFO | HILDEBRAND | Loading settings from .env...
+2026-06-11 19:28:12 | INFO | HILDEBRAND | KAFKA_BOOTSTRAP_SERVERS  = localhost:9092
+2026-06-11 19:28:12 | INFO | HILDEBRAND | KAFKA_TOPIC              = product-sales-case
+2026-06-11 19:28:12 | INFO | HILDEBRAND | KAFKA_GROUP_ID           = streaming-consumer-group-A
+2026-06-11 19:28:12 | INFO | HILDEBRAND | CONSUMER_TIMEOUT_SECONDS = 10.0
+2026-06-11 19:28:12 | INFO | HILDEBRAND | CONSUMER_MAX_MESSAGES    = 1000
+2026-06-11 19:28:12 | INFO | HILDEBRAND | Verifying Kafka connection...
+2026-06-11 19:28:12 | INFO | HILDEBRAND | Kafka port is reachable.
+2026-06-11 19:28:12 | INFO | HILDEBRAND | Verifying Kafka topic...
+2026-06-11 19:28:12 | INFO | HILDEBRAND | Topic 'product-sales-case' exists.
+2026-06-11 19:28:12 | INFO | HILDEBRAND | Found 6 message(s) available.
+2026-06-11 19:28:12 | INFO | HILDEBRAND | Creating Kafka consumer...
+2026-06-11 19:28:12 | INFO | HILDEBRAND | Subscribed to topic: 'product-sales-case' (reading from beginning)
+2026-06-11 19:28:12 | INFO | HILDEBRAND | ========================
+2026-06-11 19:28:12 | INFO | HILDEBRAND | SECTION C. Consume and Process Messages
+2026-06-11 19:28:12 | INFO | HILDEBRAND | ========================
+2026-06-11 19:28:12 | INFO | HILDEBRAND | Initializing output...
+2026-06-11 19:28:12 | INFO | HILDEBRAND | Output CSV cleared: hildebrand_high_value_sales.csv
+2026-06-11 19:28:13 | INFO | HILDEBRAND | Database initialized: hildebrand_high_value.duckdb
+2026-06-11 19:28:13 | INFO | HILDEBRAND | Loading enrichment reference data...
+2026-06-11 19:28:13 | INFO | HILDEBRAND | Found 6 region tax rates.
+2026-06-11 19:28:13 | INFO | HILDEBRAND | Consuming messages...
+2026-06-11 19:28:13 | INFO | HILDEBRAND | Waiting for up to 1000 message(s).
+2026-06-11 19:28:13 | INFO | HILDEBRAND | Press CTRL+C to stop early.
+
+2026-06-11 19:28:13 | INFO | HILDEBRAND | {'currency_code': 'USD', 'customer_id': 'CUST-4150', 'customer_note': 'Gift for my team', 'datetime': '2026-05-04T08:11:00Z', 'device_type': 'tablet', 'discount_code': '', 'is_new_customer': 'false', 'is_online': 'true', 'order_id': 'e7324981-a9f0-419f-b708-d0a333451fff', 'payment_method': 'paypal', 'product_id': 'PY-STREAM-005', 'quantity': '3', 'referral_source': 'paid_search', 'region_id': 'US-TX', 'unit_price': '59.99', '_kafka_key': 'US-TX', '_kafka_partition': 0, '_kafka_offset': 0}
+2026-06-11 19:28:13 | INFO | HILDEBRAND | subtotal=179.97
+2026-06-11 19:28:13 | INFO | HILDEBRAND | tax=14.85
+2026-06-11 19:28:13 | INFO | HILDEBRAND | total=194.82
+2026-06-11 19:28:13 | INFO | HILDEBRAND | running_total=194.82
+2026-06-11 19:28:13 | INFO | HILDEBRAND | discount_amount=0.0
+2026-06-11 19:28:13 | INFO | HILDEBRAND | is_high_value=True
+2026-06-11 19:28:13 | INFO | HILDEBRAND | Wrote valid record to DuckDB:
+2026-06-11 19:28:13 | INFO | HILDEBRAND |   order=e7324981-a9f0-419f-b708-d0a333451fff
+2026-06-11 19:28:13 | INFO | HILDEBRAND | MESSAGE ACCEPTED
+2026-06-11 19:28:13 | INFO | HILDEBRAND | order=e7324981-a9f0-419f-b708-d0a333451fff
+2026-06-11 19:28:13 | INFO | HILDEBRAND | total=$194.82
+2026-06-11 19:28:13 | INFO | HILDEBRAND | consumed=1
+2026-06-11 19:28:13 | INFO | HILDEBRAND | RUNNING STATS
+2026-06-11 19:28:13 | INFO | HILDEBRAND | total_sales=$194.82
+2026-06-11 19:28:13 | INFO | HILDEBRAND | average=$194.82
+2026-06-11 19:28:13 | INFO | HILDEBRAND | min=$194.82
+2026-06-11 19:28:13 | INFO | HILDEBRAND | max=$194.82
+2026-06-11 19:28:13 | INFO | HILDEBRAND | {'currency_code': 'USD', 'customer_id': 'CUST-1106', 'customer_note': 'Gift for my team', 'datetime': '2026-05-04T08:23:00Z', 'device_type': 'mobile', 'discount_code': '', 'is_new_customer': 'false', 'is_online': 'true', 'order_id': 'd61943e0-f543-4b5f-9c9a-18605ea4cfe5', 'payment_method': 'paypal', 'product_id': 'PY-DATA-002', 'quantity': '1', 'referral_source': 'paid_search', 'region_id': 'US-TX', 'unit_price': '49.99', '_kafka_key': 'US-TX', '_kafka_partition': 0, '_kafka_offset': 1}
+2026-06-11 19:28:13 | INFO | HILDEBRAND | subtotal=49.99
+2026-06-11 19:28:13 | INFO | HILDEBRAND | tax=4.12
+2026-06-11 19:28:13 | INFO | HILDEBRAND | total=54.11
+2026-06-11 19:28:13 | INFO | HILDEBRAND | running_total=248.93
+2026-06-11 19:28:13 | INFO | HILDEBRAND | discount_amount=0.0
+2026-06-11 19:28:13 | INFO | HILDEBRAND | is_high_value=False
+2026-06-11 19:28:13 | INFO | HILDEBRAND | Wrote valid record to DuckDB:
+2026-06-11 19:28:13 | INFO | HILDEBRAND |   order=d61943e0-f543-4b5f-9c9a-18605ea4cfe5
+2026-06-11 19:28:13 | INFO | HILDEBRAND | MESSAGE ACCEPTED
+2026-06-11 19:28:13 | INFO | HILDEBRAND | order=d61943e0-f543-4b5f-9c9a-18605ea4cfe5
+2026-06-11 19:28:13 | INFO | HILDEBRAND | total=$54.11
+2026-06-11 19:28:13 | INFO | HILDEBRAND | consumed=2
+2026-06-11 19:28:13 | INFO | HILDEBRAND | RUNNING STATS
+2026-06-11 19:28:13 | INFO | HILDEBRAND | total_sales=$248.93
+2026-06-11 19:28:13 | INFO | HILDEBRAND | average=$124.47
+2026-06-11 19:28:13 | INFO | HILDEBRAND | min=$54.11
+2026-06-11 19:28:13 | INFO | HILDEBRAND | max=$194.82
+2026-06-11 19:28:13 | INFO | HILDEBRAND | {'currency_code': 'CAD', 'customer_id': 'CUST-2133', 'customer_note': 'Learning at my own pace', 'datetime': '2026-05-04T08:28:00Z', 'device_type': 'desktop', 'discount_code': '', 'is_new_customer': 'false', 'is_online': 'true', 'order_id': '14da1915-8e74-47be-9e10-f7275d31af46', 'payment_method': 'paypal', 'product_id': 'PY-NLP-006', 'quantity': '1', 'referral_source': 'organic', 'region_id': 'CA-QC', 'unit_price': '54.99', '_kafka_key': 'CA-QC', '_kafka_partition': 0, '_kafka_offset': 2}
+2026-06-11 19:28:13 | INFO | HILDEBRAND | subtotal=54.99
+2026-06-11 19:28:13 | INFO | HILDEBRAND | tax=8.23
+2026-06-11 19:28:13 | INFO | HILDEBRAND | total=63.22
+2026-06-11 19:28:13 | INFO | HILDEBRAND | running_total=312.15
+2026-06-11 19:28:13 | INFO | HILDEBRAND | discount_amount=0.0
+2026-06-11 19:28:13 | INFO | HILDEBRAND | is_high_value=False
+2026-06-11 19:28:13 | INFO | HILDEBRAND | Wrote valid record to DuckDB:
+2026-06-11 19:28:13 | INFO | HILDEBRAND |   order=14da1915-8e74-47be-9e10-f7275d31af46
+2026-06-11 19:28:13 | INFO | HILDEBRAND | MESSAGE ACCEPTED
+2026-06-11 19:28:13 | INFO | HILDEBRAND | order=14da1915-8e74-47be-9e10-f7275d31af46
+2026-06-11 19:28:13 | INFO | HILDEBRAND | total=$63.22
+2026-06-11 19:28:13 | INFO | HILDEBRAND | consumed=3
+2026-06-11 19:28:13 | INFO | HILDEBRAND | RUNNING STATS
+2026-06-11 19:28:13 | INFO | HILDEBRAND | total_sales=$312.15
+2026-06-11 19:28:13 | INFO | HILDEBRAND | average=$104.05
+2026-06-11 19:28:13 | INFO | HILDEBRAND | min=$54.11
+2026-06-11 19:28:13 | INFO | HILDEBRAND | max=$194.82
+2026-06-11 19:28:13 | INFO | HILDEBRAND | {'currency_code': 'USD', 'customer_id': 'CUST-5333', 'customer_note': 'Highly recommend', 'datetime': '2026-05-04T08:40:00Z', 'device_type': 'mobile', 'discount_code': '', 'is_new_customer': 'false', 'is_online': 'true', 'order_id': 'd77ed935-9b28-431d-bc25-0a3fd98f4154', 'payment_method': 'paypal', 'product_id': 'PY-STREAM-005', 'quantity': '1', 'referral_source': 'organic', 'region_id': 'US-CA', 'unit_price': '59.99', '_kafka_key': 'US-CA', '_kafka_partition': 0, '_kafka_offset': 3}
+2026-06-11 19:28:13 | INFO | HILDEBRAND | subtotal=59.99
+2026-06-11 19:28:13 | INFO | HILDEBRAND | tax=5.7
+2026-06-11 19:28:13 | INFO | HILDEBRAND | total=65.69
+2026-06-11 19:28:13 | INFO | HILDEBRAND | running_total=377.84
+2026-06-11 19:28:13 | INFO | HILDEBRAND | discount_amount=0.0
+2026-06-11 19:28:13 | INFO | HILDEBRAND | is_high_value=False
+2026-06-11 19:28:13 | INFO | HILDEBRAND | Wrote valid record to DuckDB:
+2026-06-11 19:28:13 | INFO | HILDEBRAND |   order=d77ed935-9b28-431d-bc25-0a3fd98f4154
+2026-06-11 19:28:13 | INFO | HILDEBRAND | MESSAGE ACCEPTED
+2026-06-11 19:28:13 | INFO | HILDEBRAND | order=d77ed935-9b28-431d-bc25-0a3fd98f4154
+2026-06-11 19:28:13 | INFO | HILDEBRAND | total=$65.69
+2026-06-11 19:28:13 | INFO | HILDEBRAND | consumed=4
+2026-06-11 19:28:13 | INFO | HILDEBRAND | RUNNING STATS
+2026-06-11 19:28:13 | INFO | HILDEBRAND | total_sales=$377.84
+2026-06-11 19:28:13 | INFO | HILDEBRAND | average=$94.46
+2026-06-11 19:28:13 | INFO | HILDEBRAND | min=$54.11
+2026-06-11 19:28:13 | INFO | HILDEBRAND | max=$194.82
+2026-06-11 19:28:13 | INFO | HILDEBRAND | {'currency_code': 'USD', 'customer_id': 'CUST-8573', 'customer_note': 'Learning at my own pace', 'datetime': '2026-05-04T08:41:00Z', 'device_type': 'mobile', 'discount_code': '', 'is_new_customer': 'false', 'is_online': 'true', 'order_id': '24b91995-25f8-4ad7-8fa6-2e4c15750e5e', 'payment_method': 'apple_pay', 'product_id': 'PY-VIZ-003', 'quantity': '1', 'referral_source': 'paid_search', 'region_id': 'US-MO', 'unit_price': '39.99', '_kafka_key': 'US-MO', '_kafka_partition': 0, '_kafka_offset': 4}
+2026-06-11 19:28:13 | INFO | HILDEBRAND | subtotal=39.99
+2026-06-11 19:28:13 | INFO | HILDEBRAND | tax=3.2
+2026-06-11 19:28:13 | INFO | HILDEBRAND | total=43.19
+2026-06-11 19:28:13 | INFO | HILDEBRAND | running_total=421.03
+2026-06-11 19:28:13 | INFO | HILDEBRAND | discount_amount=0.0
+2026-06-11 19:28:13 | INFO | HILDEBRAND | is_high_value=False
+2026-06-11 19:28:13 | INFO | HILDEBRAND | Wrote valid record to DuckDB:
+2026-06-11 19:28:13 | INFO | HILDEBRAND |   order=24b91995-25f8-4ad7-8fa6-2e4c15750e5e
+2026-06-11 19:28:13 | INFO | HILDEBRAND | MESSAGE ACCEPTED
+2026-06-11 19:28:13 | INFO | HILDEBRAND | order=24b91995-25f8-4ad7-8fa6-2e4c15750e5e
+2026-06-11 19:28:13 | INFO | HILDEBRAND | total=$43.19
+2026-06-11 19:28:13 | INFO | HILDEBRAND | consumed=5
+2026-06-11 19:28:13 | INFO | HILDEBRAND | RUNNING STATS
+2026-06-11 19:28:13 | INFO | HILDEBRAND | total_sales=$421.03
+2026-06-11 19:28:13 | INFO | HILDEBRAND | average=$84.21
+2026-06-11 19:28:13 | INFO | HILDEBRAND | min=$43.19
+2026-06-11 19:28:13 | INFO | HILDEBRAND | max=$194.82
+2026-06-11 19:28:13 | INFO | HILDEBRAND | {'currency_code': 'CAD', 'customer_id': 'CUST-8062', 'customer_note': '', 'datetime': '2026-05-04T08:54:00Z', 'device_type': 'tablet', 'discount_code': '', 'is_new_customer': 'false', 'is_online': 'true', 'order_id': '1ec0fc8b-998c-4f43-8a66-19e1fa7d5fa8', 'payment_method': 'paypal', 'product_id': 'PY-SQL-004', 'quantity': '1', 'referral_source': 'organic', 'region_id': 'CA-ON', 'unit_price': '44.99', '_kafka_key': 'CA-ON', '_kafka_partition': 0, '_kafka_offset': 5}
+2026-06-11 19:28:13 | INFO | HILDEBRAND | subtotal=44.99
+2026-06-11 19:28:13 | INFO | HILDEBRAND | tax=5.85
+2026-06-11 19:28:13 | INFO | HILDEBRAND | total=50.84
+2026-06-11 19:28:13 | INFO | HILDEBRAND | running_total=471.87
+2026-06-11 19:28:13 | INFO | HILDEBRAND | discount_amount=0.0
+2026-06-11 19:28:13 | INFO | HILDEBRAND | is_high_value=False
+2026-06-11 19:28:14 | INFO | HILDEBRAND | Wrote valid record to DuckDB:
+2026-06-11 19:28:14 | INFO | HILDEBRAND |   order=1ec0fc8b-998c-4f43-8a66-19e1fa7d5fa8
+2026-06-11 19:28:14 | INFO | HILDEBRAND | MESSAGE ACCEPTED
+2026-06-11 19:28:14 | INFO | HILDEBRAND | order=1ec0fc8b-998c-4f43-8a66-19e1fa7d5fa8
+2026-06-11 19:28:14 | INFO | HILDEBRAND | total=$50.84
+2026-06-11 19:28:14 | INFO | HILDEBRAND | consumed=6
+2026-06-11 19:28:14 | INFO | HILDEBRAND | RUNNING STATS
+2026-06-11 19:28:14 | INFO | HILDEBRAND | total_sales=$471.87
+2026-06-11 19:28:14 | INFO | HILDEBRAND | average=$78.64
+2026-06-11 19:28:14 | INFO | HILDEBRAND | min=$43.19
+2026-06-11 19:28:14 | INFO | HILDEBRAND | max=$194.82
+2026-06-11 19:28:24 | INFO | HILDEBRAND | No message received within 10.0s timeout.
+2026-06-11 19:28:24 | INFO | HILDEBRAND | Producer finished or paused. Stopping consumer.
+2026-06-11 19:28:24 | INFO | HILDEBRAND | Kafka consumer closed.
+2026-06-11 19:28:24 | INFO | HILDEBRAND | Saving artifacts...
+2026-06-11 19:28:24 | INFO | HILDEBRAND | WROTE OUTPUT_CSV = data/output/hildebrand_high_value_sales.csv
+2026-06-11 19:28:24 | INFO | HILDEBRAND | WROTE OUTPUT_DB = data/output/hildebrand_high_value.duckdb
+2026-06-11 19:28:24 | INFO | HILDEBRAND | ========================
+2026-06-11 19:28:24 | INFO | HILDEBRAND | SECTION E. Exit
+2026-06-11 19:28:24 | INFO | HILDEBRAND | ========================
+2026-06-11 19:28:24 | INFO | HILDEBRAND | Summary:
+2026-06-11 19:28:24 | INFO | HILDEBRAND | Consumed 6 message(s) from topic 'product-sales-case'.
+2026-06-11 19:28:24 | INFO | HILDEBRAND | Skipped  0 message(s).
+2026-06-11 19:28:24 | INFO | HILDEBRAND | OUTPUT_CSV = data/output/hildebrand_high_value_sales.csv
+2026-06-11 19:28:24 | INFO | HILDEBRAND |   Total sales:  $471.87
+2026-06-11 19:28:24 | INFO | HILDEBRAND |   Average sale: $78.64
+2026-06-11 19:28:24 | INFO | HILDEBRAND |   Minimum sale: $43.19
+2026-06-11 19:28:24 | INFO | HILDEBRAND |   Maximum sale: $194.82
+2026-06-11 19:28:24 | INFO | HILDEBRAND | ========================
+2026-06-11 19:28:24 | INFO | HILDEBRAND | Consumer executed successfully!
+2026-06-11 19:28:24 | INFO | HILDEBRAND | ========================
+2026-06-11 20:02:39 | DEBUG | HILDEBRAND | No variables found in .env
+2026-06-11 20:02:39 | INFO | HILDEBRAND | === RUN START ===
+2026-06-11 20:02:39 | INFO | HILDEBRAND | project=C05
+2026-06-11 20:02:39 | INFO | HILDEBRAND | repo_dir=streaming-05-storage
+2026-06-11 20:02:39 | INFO | HILDEBRAND | python=3.14.4
+2026-06-11 20:02:39 | INFO | HILDEBRAND | os=Linux 6.6.114.1-microsoft-standard-WSL2
+2026-06-11 20:02:39 | INFO | HILDEBRAND | shell=bash
+2026-06-11 20:02:39 | INFO | HILDEBRAND | cwd=.
+2026-06-11 20:02:39 | INFO | HILDEBRAND | github_actions=False
+2026-06-11 20:02:39 | INFO | HILDEBRAND | ========================
+2026-06-11 20:02:39 | INFO | HILDEBRAND | START consumer main()
+2026-06-11 20:02:39 | INFO | HILDEBRAND | ========================
+2026-06-11 20:02:39 | INFO | HILDEBRAND | ROOT_DIR = .
+2026-06-11 20:02:39 | INFO | HILDEBRAND | DATA_DIR = data
+2026-06-11 20:02:39 | INFO | HILDEBRAND | OUTPUT_CSV = data/output/hildebrand_high_value_sales.csv
+2026-06-11 20:02:39 | INFO | HILDEBRAND | OUTPUT_DB = data/output/hildebrand_high_value.duckdb
+2026-06-11 20:02:39 | INFO | HILDEBRAND | REGIONS_CSV = data/regions.csv
+2026-06-11 20:02:39 | INFO | HILDEBRAND | PRODUCTS_CSV = data/products.csv
+2026-06-11 20:02:39 | INFO | HILDEBRAND | CURRENCIES_CSV = data/currencies.csv
+2026-06-11 20:02:39 | INFO | HILDEBRAND | DISCOUNT_CODES_CSV = data/discount_codes.csv
+2026-06-11 20:02:39 | INFO | HILDEBRAND | ========================
+2026-06-11 20:02:39 | INFO | HILDEBRAND | SECTION A. Acquire
+2026-06-11 20:02:39 | INFO | HILDEBRAND | ========================
+2026-06-11 20:02:39 | INFO | HILDEBRAND | Loading settings from .env...
+2026-06-11 20:02:39 | INFO | HILDEBRAND | KAFKA_BOOTSTRAP_SERVERS  = localhost:9092
+2026-06-11 20:02:39 | INFO | HILDEBRAND | KAFKA_TOPIC              = product-sales-case
+2026-06-11 20:02:39 | INFO | HILDEBRAND | KAFKA_GROUP_ID           = streaming-consumer-group-A
+2026-06-11 20:02:39 | INFO | HILDEBRAND | CONSUMER_TIMEOUT_SECONDS = 10.0
+2026-06-11 20:02:39 | INFO | HILDEBRAND | CONSUMER_MAX_MESSAGES    = 1000
+2026-06-11 20:02:39 | INFO | HILDEBRAND | Verifying Kafka connection...
+2026-06-11 20:02:39 | INFO | HILDEBRAND | Kafka port is reachable.
+2026-06-11 20:02:39 | INFO | HILDEBRAND | Verifying Kafka topic...
+2026-06-11 20:02:39 | INFO | HILDEBRAND | Topic 'product-sales-case' exists.
+2026-06-11 20:02:39 | INFO | HILDEBRAND | Found 6 message(s) available.
+2026-06-11 20:02:39 | INFO | HILDEBRAND | Creating Kafka consumer...
+2026-06-11 20:02:39 | INFO | HILDEBRAND | Subscribed to topic: 'product-sales-case' (reading from beginning)
+2026-06-11 20:02:39 | INFO | HILDEBRAND | ========================
+2026-06-11 20:02:39 | INFO | HILDEBRAND | SECTION C. Consume and Process Messages
+2026-06-11 20:02:39 | INFO | HILDEBRAND | ========================
+2026-06-11 20:02:39 | INFO | HILDEBRAND | Initializing output...
+2026-06-11 20:02:39 | INFO | HILDEBRAND | Output CSV cleared: hildebrand_high_value_sales.csv
+2026-06-11 20:02:39 | INFO | HILDEBRAND | Database initialized: hildebrand_high_value.duckdb
+2026-06-11 20:02:39 | INFO | HILDEBRAND | Loading enrichment reference data...
+2026-06-11 20:02:39 | INFO | HILDEBRAND | Found 6 region tax rates.
+2026-06-11 20:02:39 | INFO | HILDEBRAND | Consuming messages...
+2026-06-11 20:02:39 | INFO | HILDEBRAND | Waiting for up to 1000 message(s).
+2026-06-11 20:02:39 | INFO | HILDEBRAND | Press CTRL+C to stop early.
+
+2026-06-11 20:02:39 | INFO | HILDEBRAND | {'currency_code': 'USD', 'customer_id': 'CUST-4150', 'customer_note': 'Gift for my team', 'datetime': '2026-05-04T08:11:00Z', 'device_type': 'tablet', 'discount_code': '', 'is_new_customer': 'false', 'is_online': 'true', 'order_id': 'e7324981-a9f0-419f-b708-d0a333451fff', 'payment_method': 'paypal', 'product_id': 'PY-STREAM-005', 'quantity': '3', 'referral_source': 'paid_search', 'region_id': 'US-TX', 'unit_price': '59.99', '_kafka_key': 'US-TX', '_kafka_partition': 0, '_kafka_offset': 0}
+2026-06-11 20:02:39 | INFO | HILDEBRAND | subtotal=179.97
+2026-06-11 20:02:39 | INFO | HILDEBRAND | tax=14.85
+2026-06-11 20:02:39 | INFO | HILDEBRAND | total=194.82
+2026-06-11 20:02:39 | INFO | HILDEBRAND | running_total=194.82
+2026-06-11 20:02:39 | INFO | HILDEBRAND | discount_amount=0.0
+2026-06-11 20:02:39 | INFO | HILDEBRAND | is_high_value=True
+2026-06-11 20:02:40 | INFO | HILDEBRAND | Wrote valid record to DuckDB:
+2026-06-11 20:02:40 | INFO | HILDEBRAND |   order=e7324981-a9f0-419f-b708-d0a333451fff
+2026-06-11 20:02:40 | INFO | HILDEBRAND | MESSAGE ACCEPTED
+2026-06-11 20:02:40 | INFO | HILDEBRAND | order=e7324981-a9f0-419f-b708-d0a333451fff
+2026-06-11 20:02:40 | INFO | HILDEBRAND | total=$194.82
+2026-06-11 20:02:40 | INFO | HILDEBRAND | consumed=1
+2026-06-11 20:02:40 | INFO | HILDEBRAND | RUNNING STATS
+2026-06-11 20:02:40 | INFO | HILDEBRAND | total_sales=$194.82
+2026-06-11 20:02:40 | INFO | HILDEBRAND | average=$194.82
+2026-06-11 20:02:40 | INFO | HILDEBRAND | min=$194.82
+2026-06-11 20:02:40 | INFO | HILDEBRAND | max=$194.82
+2026-06-11 20:02:40 | INFO | HILDEBRAND | {'currency_code': 'USD', 'customer_id': 'CUST-1106', 'customer_note': 'Gift for my team', 'datetime': '2026-05-04T08:23:00Z', 'device_type': 'mobile', 'discount_code': '', 'is_new_customer': 'false', 'is_online': 'true', 'order_id': 'd61943e0-f543-4b5f-9c9a-18605ea4cfe5', 'payment_method': 'paypal', 'product_id': 'PY-DATA-002', 'quantity': '1', 'referral_source': 'paid_search', 'region_id': 'US-TX', 'unit_price': '49.99', '_kafka_key': 'US-TX', '_kafka_partition': 0, '_kafka_offset': 1}
+2026-06-11 20:02:40 | INFO | HILDEBRAND | subtotal=49.99
+2026-06-11 20:02:40 | INFO | HILDEBRAND | tax=4.12
+2026-06-11 20:02:40 | INFO | HILDEBRAND | total=54.11
+2026-06-11 20:02:40 | INFO | HILDEBRAND | running_total=248.93
+2026-06-11 20:02:40 | INFO | HILDEBRAND | discount_amount=0.0
+2026-06-11 20:02:40 | INFO | HILDEBRAND | is_high_value=False
+2026-06-11 20:02:40 | INFO | HILDEBRAND | Wrote valid record to DuckDB:
+2026-06-11 20:02:40 | INFO | HILDEBRAND |   order=d61943e0-f543-4b5f-9c9a-18605ea4cfe5
+2026-06-11 20:02:40 | INFO | HILDEBRAND | MESSAGE ACCEPTED
+2026-06-11 20:02:40 | INFO | HILDEBRAND | order=d61943e0-f543-4b5f-9c9a-18605ea4cfe5
+2026-06-11 20:02:40 | INFO | HILDEBRAND | total=$54.11
+2026-06-11 20:02:40 | INFO | HILDEBRAND | consumed=2
+2026-06-11 20:02:40 | INFO | HILDEBRAND | RUNNING STATS
+2026-06-11 20:02:40 | INFO | HILDEBRAND | total_sales=$248.93
+2026-06-11 20:02:40 | INFO | HILDEBRAND | average=$124.47
+2026-06-11 20:02:40 | INFO | HILDEBRAND | min=$54.11
+2026-06-11 20:02:40 | INFO | HILDEBRAND | max=$194.82
+2026-06-11 20:02:40 | INFO | HILDEBRAND | {'currency_code': 'CAD', 'customer_id': 'CUST-2133', 'customer_note': 'Learning at my own pace', 'datetime': '2026-05-04T08:28:00Z', 'device_type': 'desktop', 'discount_code': '', 'is_new_customer': 'false', 'is_online': 'true', 'order_id': '14da1915-8e74-47be-9e10-f7275d31af46', 'payment_method': 'paypal', 'product_id': 'PY-NLP-006', 'quantity': '1', 'referral_source': 'organic', 'region_id': 'CA-QC', 'unit_price': '54.99', '_kafka_key': 'CA-QC', '_kafka_partition': 0, '_kafka_offset': 2}
+2026-06-11 20:02:40 | INFO | HILDEBRAND | subtotal=54.99
+2026-06-11 20:02:40 | INFO | HILDEBRAND | tax=8.23
+2026-06-11 20:02:40 | INFO | HILDEBRAND | total=63.22
+2026-06-11 20:02:40 | INFO | HILDEBRAND | running_total=312.15
+2026-06-11 20:02:40 | INFO | HILDEBRAND | discount_amount=0.0
+2026-06-11 20:02:40 | INFO | HILDEBRAND | is_high_value=False
+2026-06-11 20:02:40 | INFO | HILDEBRAND | Wrote valid record to DuckDB:
+2026-06-11 20:02:40 | INFO | HILDEBRAND |   order=14da1915-8e74-47be-9e10-f7275d31af46
+2026-06-11 20:02:40 | INFO | HILDEBRAND | MESSAGE ACCEPTED
+2026-06-11 20:02:40 | INFO | HILDEBRAND | order=14da1915-8e74-47be-9e10-f7275d31af46
+2026-06-11 20:02:40 | INFO | HILDEBRAND | total=$63.22
+2026-06-11 20:02:40 | INFO | HILDEBRAND | consumed=3
+2026-06-11 20:02:40 | INFO | HILDEBRAND | RUNNING STATS
+2026-06-11 20:02:40 | INFO | HILDEBRAND | total_sales=$312.15
+2026-06-11 20:02:40 | INFO | HILDEBRAND | average=$104.05
+2026-06-11 20:02:40 | INFO | HILDEBRAND | min=$54.11
+2026-06-11 20:02:40 | INFO | HILDEBRAND | max=$194.82
+2026-06-11 20:02:40 | INFO | HILDEBRAND | {'currency_code': 'USD', 'customer_id': 'CUST-5333', 'customer_note': 'Highly recommend', 'datetime': '2026-05-04T08:40:00Z', 'device_type': 'mobile', 'discount_code': '', 'is_new_customer': 'false', 'is_online': 'true', 'order_id': 'd77ed935-9b28-431d-bc25-0a3fd98f4154', 'payment_method': 'paypal', 'product_id': 'PY-STREAM-005', 'quantity': '1', 'referral_source': 'organic', 'region_id': 'US-CA', 'unit_price': '59.99', '_kafka_key': 'US-CA', '_kafka_partition': 0, '_kafka_offset': 3}
+2026-06-11 20:02:40 | INFO | HILDEBRAND | subtotal=59.99
+2026-06-11 20:02:40 | INFO | HILDEBRAND | tax=5.7
+2026-06-11 20:02:40 | INFO | HILDEBRAND | total=65.69
+2026-06-11 20:02:40 | INFO | HILDEBRAND | running_total=377.84
+2026-06-11 20:02:40 | INFO | HILDEBRAND | discount_amount=0.0
+2026-06-11 20:02:40 | INFO | HILDEBRAND | is_high_value=False
+2026-06-11 20:02:41 | INFO | HILDEBRAND | Wrote valid record to DuckDB:
+2026-06-11 20:02:41 | INFO | HILDEBRAND |   order=d77ed935-9b28-431d-bc25-0a3fd98f4154
+2026-06-11 20:02:41 | INFO | HILDEBRAND | MESSAGE ACCEPTED
+2026-06-11 20:02:41 | INFO | HILDEBRAND | order=d77ed935-9b28-431d-bc25-0a3fd98f4154
+2026-06-11 20:02:41 | INFO | HILDEBRAND | total=$65.69
+2026-06-11 20:02:41 | INFO | HILDEBRAND | consumed=4
+2026-06-11 20:02:41 | INFO | HILDEBRAND | RUNNING STATS
+2026-06-11 20:02:41 | INFO | HILDEBRAND | total_sales=$377.84
+2026-06-11 20:02:41 | INFO | HILDEBRAND | average=$94.46
+2026-06-11 20:02:41 | INFO | HILDEBRAND | min=$54.11
+2026-06-11 20:02:41 | INFO | HILDEBRAND | max=$194.82
+2026-06-11 20:02:41 | INFO | HILDEBRAND | {'currency_code': 'USD', 'customer_id': 'CUST-8573', 'customer_note': 'Learning at my own pace', 'datetime': '2026-05-04T08:41:00Z', 'device_type': 'mobile', 'discount_code': '', 'is_new_customer': 'false', 'is_online': 'true', 'order_id': '24b91995-25f8-4ad7-8fa6-2e4c15750e5e', 'payment_method': 'apple_pay', 'product_id': 'PY-VIZ-003', 'quantity': '1', 'referral_source': 'paid_search', 'region_id': 'US-MO', 'unit_price': '39.99', '_kafka_key': 'US-MO', '_kafka_partition': 0, '_kafka_offset': 4}
+2026-06-11 20:02:41 | INFO | HILDEBRAND | subtotal=39.99
+2026-06-11 20:02:41 | INFO | HILDEBRAND | tax=3.2
+2026-06-11 20:02:41 | INFO | HILDEBRAND | total=43.19
+2026-06-11 20:02:41 | INFO | HILDEBRAND | running_total=421.03
+2026-06-11 20:02:41 | INFO | HILDEBRAND | discount_amount=0.0
+2026-06-11 20:02:41 | INFO | HILDEBRAND | is_high_value=False
+2026-06-11 20:02:41 | INFO | HILDEBRAND | Wrote valid record to DuckDB:
+2026-06-11 20:02:41 | INFO | HILDEBRAND |   order=24b91995-25f8-4ad7-8fa6-2e4c15750e5e
+2026-06-11 20:02:41 | INFO | HILDEBRAND | MESSAGE ACCEPTED
+2026-06-11 20:02:41 | INFO | HILDEBRAND | order=24b91995-25f8-4ad7-8fa6-2e4c15750e5e
+2026-06-11 20:02:41 | INFO | HILDEBRAND | total=$43.19
+2026-06-11 20:02:41 | INFO | HILDEBRAND | consumed=5
+2026-06-11 20:02:41 | INFO | HILDEBRAND | RUNNING STATS
+2026-06-11 20:02:41 | INFO | HILDEBRAND | total_sales=$421.03
+2026-06-11 20:02:41 | INFO | HILDEBRAND | average=$84.21
+2026-06-11 20:02:41 | INFO | HILDEBRAND | min=$43.19
+2026-06-11 20:02:41 | INFO | HILDEBRAND | max=$194.82
+2026-06-11 20:02:41 | INFO | HILDEBRAND | {'currency_code': 'CAD', 'customer_id': 'CUST-8062', 'customer_note': '', 'datetime': '2026-05-04T08:54:00Z', 'device_type': 'tablet', 'discount_code': '', 'is_new_customer': 'false', 'is_online': 'true', 'order_id': '1ec0fc8b-998c-4f43-8a66-19e1fa7d5fa8', 'payment_method': 'paypal', 'product_id': 'PY-SQL-004', 'quantity': '1', 'referral_source': 'organic', 'region_id': 'CA-ON', 'unit_price': '44.99', '_kafka_key': 'CA-ON', '_kafka_partition': 0, '_kafka_offset': 5}
+2026-06-11 20:02:41 | INFO | HILDEBRAND | subtotal=44.99
+2026-06-11 20:02:41 | INFO | HILDEBRAND | tax=5.85
+2026-06-11 20:02:41 | INFO | HILDEBRAND | total=50.84
+2026-06-11 20:02:41 | INFO | HILDEBRAND | running_total=471.87
+2026-06-11 20:02:41 | INFO | HILDEBRAND | discount_amount=0.0
+2026-06-11 20:02:41 | INFO | HILDEBRAND | is_high_value=False
+2026-06-11 20:02:41 | INFO | HILDEBRAND | Wrote valid record to DuckDB:
+2026-06-11 20:02:41 | INFO | HILDEBRAND |   order=1ec0fc8b-998c-4f43-8a66-19e1fa7d5fa8
+2026-06-11 20:02:41 | INFO | HILDEBRAND | MESSAGE ACCEPTED
+2026-06-11 20:02:41 | INFO | HILDEBRAND | order=1ec0fc8b-998c-4f43-8a66-19e1fa7d5fa8
+2026-06-11 20:02:41 | INFO | HILDEBRAND | total=$50.84
+2026-06-11 20:02:41 | INFO | HILDEBRAND | consumed=6
+2026-06-11 20:02:41 | INFO | HILDEBRAND | RUNNING STATS
+2026-06-11 20:02:41 | INFO | HILDEBRAND | total_sales=$471.87
+2026-06-11 20:02:41 | INFO | HILDEBRAND | average=$78.64
+2026-06-11 20:02:41 | INFO | HILDEBRAND | min=$43.19
+2026-06-11 20:02:41 | INFO | HILDEBRAND | max=$194.82
+2026-06-11 20:02:51 | INFO | HILDEBRAND | No message received within 10.0s timeout.
+2026-06-11 20:02:51 | INFO | HILDEBRAND | Producer finished or paused. Stopping consumer.
+2026-06-11 20:02:51 | INFO | HILDEBRAND | Kafka consumer closed.
+2026-06-11 20:02:51 | INFO | HILDEBRAND | Saving artifacts...
+2026-06-11 20:02:51 | INFO | HILDEBRAND | WROTE OUTPUT_CSV = data/output/hildebrand_high_value_sales.csv
+2026-06-11 20:02:51 | INFO | HILDEBRAND | WROTE OUTPUT_DB = data/output/hildebrand_high_value.duckdb
+2026-06-11 20:02:51 | INFO | HILDEBRAND | ========================
+2026-06-11 20:02:51 | INFO | HILDEBRAND | SECTION E. Exit
+2026-06-11 20:02:51 | INFO | HILDEBRAND | ========================
+2026-06-11 20:02:51 | INFO | HILDEBRAND | Summary:
+2026-06-11 20:02:51 | INFO | HILDEBRAND | Consumed 6 message(s) from topic 'product-sales-case'.
+2026-06-11 20:02:51 | INFO | HILDEBRAND | Skipped  0 message(s).
+2026-06-11 20:02:51 | INFO | HILDEBRAND | OUTPUT_CSV = data/output/hildebrand_high_value_sales.csv
+2026-06-11 20:02:51 | INFO | HILDEBRAND |   Total sales:  $471.87
+2026-06-11 20:02:51 | INFO | HILDEBRAND |   Average sale: $78.64
+2026-06-11 20:02:51 | INFO | HILDEBRAND |   Minimum sale: $43.19
+2026-06-11 20:02:51 | INFO | HILDEBRAND |   Maximum sale: $194.82
+2026-06-11 20:02:51 | INFO | HILDEBRAND | ========================
+2026-06-11 20:02:51 | INFO | HILDEBRAND | Consumer executed successfully!
+2026-06-11 20:02:51 | INFO | HILDEBRAND | ========================
+2026-06-11 20:06:01 | DEBUG | HILDEBRAND | No variables found in .env
+2026-06-11 20:06:01 | INFO | HILDEBRAND | === RUN START ===
+2026-06-11 20:06:01 | INFO | HILDEBRAND | project=C05
+2026-06-11 20:06:01 | INFO | HILDEBRAND | repo_dir=streaming-05-storage
+2026-06-11 20:06:01 | INFO | HILDEBRAND | python=3.14.4
+2026-06-11 20:06:01 | INFO | HILDEBRAND | os=Linux 6.6.114.1-microsoft-standard-WSL2
+2026-06-11 20:06:01 | INFO | HILDEBRAND | shell=bash
+2026-06-11 20:06:01 | INFO | HILDEBRAND | cwd=.
+2026-06-11 20:06:01 | INFO | HILDEBRAND | github_actions=False
+2026-06-11 20:06:01 | INFO | HILDEBRAND | ========================
+2026-06-11 20:06:01 | INFO | HILDEBRAND | START consumer main()
+2026-06-11 20:06:01 | INFO | HILDEBRAND | ========================
+2026-06-11 20:06:01 | INFO | HILDEBRAND | ROOT_DIR = .
+2026-06-11 20:06:01 | INFO | HILDEBRAND | DATA_DIR = data
+2026-06-11 20:06:01 | INFO | HILDEBRAND | OUTPUT_CSV = data/output/hildebrand_high_value_sales.csv
+2026-06-11 20:06:01 | INFO | HILDEBRAND | OUTPUT_DB = data/output/hildebrand_high_value.duckdb
+2026-06-11 20:06:01 | INFO | HILDEBRAND | REGIONS_CSV = data/regions.csv
+2026-06-11 20:06:01 | INFO | HILDEBRAND | PRODUCTS_CSV = data/products.csv
+2026-06-11 20:06:01 | INFO | HILDEBRAND | CURRENCIES_CSV = data/currencies.csv
+2026-06-11 20:06:01 | INFO | HILDEBRAND | DISCOUNT_CODES_CSV = data/discount_codes.csv
+2026-06-11 20:06:01 | INFO | HILDEBRAND | ========================
+2026-06-11 20:06:01 | INFO | HILDEBRAND | SECTION A. Acquire
+2026-06-11 20:06:01 | INFO | HILDEBRAND | ========================
+2026-06-11 20:06:01 | INFO | HILDEBRAND | Loading settings from .env...
+2026-06-11 20:06:01 | INFO | HILDEBRAND | KAFKA_BOOTSTRAP_SERVERS  = localhost:9092
+2026-06-11 20:06:01 | INFO | HILDEBRAND | KAFKA_TOPIC              = product-sales-case
+2026-06-11 20:06:01 | INFO | HILDEBRAND | KAFKA_GROUP_ID           = streaming-consumer-group-A
+2026-06-11 20:06:01 | INFO | HILDEBRAND | CONSUMER_TIMEOUT_SECONDS = 10.0
+2026-06-11 20:06:01 | INFO | HILDEBRAND | CONSUMER_MAX_MESSAGES    = 1000
+2026-06-11 20:06:01 | INFO | HILDEBRAND | Verifying Kafka connection...
+2026-06-11 20:06:01 | INFO | HILDEBRAND | Kafka port is reachable.
+2026-06-11 20:06:01 | INFO | HILDEBRAND | Verifying Kafka topic...
+2026-06-11 20:06:02 | INFO | HILDEBRAND | Topic 'product-sales-case' exists.
+2026-06-11 20:06:02 | INFO | HILDEBRAND | Found 6 message(s) available.
+2026-06-11 20:06:02 | INFO | HILDEBRAND | Creating Kafka consumer...
+2026-06-11 20:06:02 | INFO | HILDEBRAND | Subscribed to topic: 'product-sales-case' (reading from beginning)
+2026-06-11 20:06:02 | INFO | HILDEBRAND | ========================
+2026-06-11 20:06:02 | INFO | HILDEBRAND | SECTION C. Consume and Process Messages
+2026-06-11 20:06:02 | INFO | HILDEBRAND | ========================
+2026-06-11 20:06:02 | INFO | HILDEBRAND | Initializing output...
+2026-06-11 20:06:02 | INFO | HILDEBRAND | Output CSV cleared: hildebrand_high_value_sales.csv
+2026-06-11 20:06:02 | INFO | HILDEBRAND | Database initialized: hildebrand_high_value.duckdb
+2026-06-11 20:06:02 | INFO | HILDEBRAND | Loading enrichment reference data...
+2026-06-11 20:06:02 | INFO | HILDEBRAND | Found 6 region tax rates.
+2026-06-11 20:06:02 | INFO | HILDEBRAND | Consuming messages...
+2026-06-11 20:06:02 | INFO | HILDEBRAND | Waiting for up to 1000 message(s).
+2026-06-11 20:06:02 | INFO | HILDEBRAND | Press CTRL+C to stop early.
+
+2026-06-11 20:06:02 | INFO | HILDEBRAND | {'currency_code': 'USD', 'customer_id': 'CUST-4150', 'customer_note': 'Gift for my team', 'datetime': '2026-05-04T08:11:00Z', 'device_type': 'tablet', 'discount_code': '', 'is_new_customer': 'false', 'is_online': 'true', 'order_id': 'e7324981-a9f0-419f-b708-d0a333451fff', 'payment_method': 'paypal', 'product_id': 'PY-STREAM-005', 'quantity': '3', 'referral_source': 'paid_search', 'region_id': 'US-TX', 'unit_price': '59.99', '_kafka_key': 'US-TX', '_kafka_partition': 0, '_kafka_offset': 0}
+2026-06-11 20:06:02 | INFO | HILDEBRAND | subtotal=179.97
+2026-06-11 20:06:02 | INFO | HILDEBRAND | tax=14.85
+2026-06-11 20:06:02 | INFO | HILDEBRAND | total=194.82
+2026-06-11 20:06:02 | INFO | HILDEBRAND | running_total=194.82
+2026-06-11 20:06:02 | INFO | HILDEBRAND | discount_amount=0.0
+2026-06-11 20:06:02 | INFO | HILDEBRAND | is_high_value=True
+2026-06-11 20:06:02 | INFO | HILDEBRAND | Wrote valid record to DuckDB:
+2026-06-11 20:06:02 | INFO | HILDEBRAND |   order=e7324981-a9f0-419f-b708-d0a333451fff
+2026-06-11 20:06:02 | INFO | HILDEBRAND | MESSAGE ACCEPTED
+2026-06-11 20:06:02 | INFO | HILDEBRAND | order=e7324981-a9f0-419f-b708-d0a333451fff
+2026-06-11 20:06:02 | INFO | HILDEBRAND | total=$194.82
+2026-06-11 20:06:02 | INFO | HILDEBRAND | consumed=1
+2026-06-11 20:06:02 | INFO | HILDEBRAND | RUNNING STATS
+2026-06-11 20:06:02 | INFO | HILDEBRAND | total_sales=$194.82
+2026-06-11 20:06:02 | INFO | HILDEBRAND | average=$194.82
+2026-06-11 20:06:02 | INFO | HILDEBRAND | min=$194.82
+2026-06-11 20:06:02 | INFO | HILDEBRAND | max=$194.82
+2026-06-11 20:06:02 | INFO | HILDEBRAND | {'currency_code': 'USD', 'customer_id': 'CUST-1106', 'customer_note': 'Gift for my team', 'datetime': '2026-05-04T08:23:00Z', 'device_type': 'mobile', 'discount_code': '', 'is_new_customer': 'false', 'is_online': 'true', 'order_id': 'd61943e0-f543-4b5f-9c9a-18605ea4cfe5', 'payment_method': 'paypal', 'product_id': 'PY-DATA-002', 'quantity': '1', 'referral_source': 'paid_search', 'region_id': 'US-TX', 'unit_price': '49.99', '_kafka_key': 'US-TX', '_kafka_partition': 0, '_kafka_offset': 1}
+2026-06-11 20:06:02 | INFO | HILDEBRAND | subtotal=49.99
+2026-06-11 20:06:02 | INFO | HILDEBRAND | tax=4.12
+2026-06-11 20:06:02 | INFO | HILDEBRAND | total=54.11
+2026-06-11 20:06:02 | INFO | HILDEBRAND | running_total=248.93
+2026-06-11 20:06:02 | INFO | HILDEBRAND | discount_amount=0.0
+2026-06-11 20:06:02 | INFO | HILDEBRAND | is_high_value=False
+2026-06-11 20:06:02 | INFO | HILDEBRAND | Wrote valid record to DuckDB:
+2026-06-11 20:06:02 | INFO | HILDEBRAND |   order=d61943e0-f543-4b5f-9c9a-18605ea4cfe5
+2026-06-11 20:06:02 | INFO | HILDEBRAND | MESSAGE ACCEPTED
+2026-06-11 20:06:02 | INFO | HILDEBRAND | order=d61943e0-f543-4b5f-9c9a-18605ea4cfe5
+2026-06-11 20:06:02 | INFO | HILDEBRAND | total=$54.11
+2026-06-11 20:06:02 | INFO | HILDEBRAND | consumed=2
+2026-06-11 20:06:02 | INFO | HILDEBRAND | RUNNING STATS
+2026-06-11 20:06:02 | INFO | HILDEBRAND | total_sales=$248.93
+2026-06-11 20:06:02 | INFO | HILDEBRAND | average=$124.47
+2026-06-11 20:06:02 | INFO | HILDEBRAND | min=$54.11
+2026-06-11 20:06:02 | INFO | HILDEBRAND | max=$194.82
+2026-06-11 20:06:02 | INFO | HILDEBRAND | {'currency_code': 'CAD', 'customer_id': 'CUST-2133', 'customer_note': 'Learning at my own pace', 'datetime': '2026-05-04T08:28:00Z', 'device_type': 'desktop', 'discount_code': '', 'is_new_customer': 'false', 'is_online': 'true', 'order_id': '14da1915-8e74-47be-9e10-f7275d31af46', 'payment_method': 'paypal', 'product_id': 'PY-NLP-006', 'quantity': '1', 'referral_source': 'organic', 'region_id': 'CA-QC', 'unit_price': '54.99', '_kafka_key': 'CA-QC', '_kafka_partition': 0, '_kafka_offset': 2}
+2026-06-11 20:06:02 | INFO | HILDEBRAND | subtotal=54.99
+2026-06-11 20:06:02 | INFO | HILDEBRAND | tax=8.23
+2026-06-11 20:06:02 | INFO | HILDEBRAND | total=63.22
+2026-06-11 20:06:02 | INFO | HILDEBRAND | running_total=312.15
+2026-06-11 20:06:02 | INFO | HILDEBRAND | discount_amount=0.0
+2026-06-11 20:06:02 | INFO | HILDEBRAND | is_high_value=False
+2026-06-11 20:06:03 | INFO | HILDEBRAND | Wrote valid record to DuckDB:
+2026-06-11 20:06:03 | INFO | HILDEBRAND |   order=14da1915-8e74-47be-9e10-f7275d31af46
+2026-06-11 20:06:03 | INFO | HILDEBRAND | MESSAGE ACCEPTED
+2026-06-11 20:06:03 | INFO | HILDEBRAND | order=14da1915-8e74-47be-9e10-f7275d31af46
+2026-06-11 20:06:03 | INFO | HILDEBRAND | total=$63.22
+2026-06-11 20:06:03 | INFO | HILDEBRAND | consumed=3
+2026-06-11 20:06:03 | INFO | HILDEBRAND | RUNNING STATS
+2026-06-11 20:06:03 | INFO | HILDEBRAND | total_sales=$312.15
+2026-06-11 20:06:03 | INFO | HILDEBRAND | average=$104.05
+2026-06-11 20:06:03 | INFO | HILDEBRAND | min=$54.11
+2026-06-11 20:06:03 | INFO | HILDEBRAND | max=$194.82
+2026-06-11 20:06:03 | INFO | HILDEBRAND | {'currency_code': 'USD', 'customer_id': 'CUST-5333', 'customer_note': 'Highly recommend', 'datetime': '2026-05-04T08:40:00Z', 'device_type': 'mobile', 'discount_code': '', 'is_new_customer': 'false', 'is_online': 'true', 'order_id': 'd77ed935-9b28-431d-bc25-0a3fd98f4154', 'payment_method': 'paypal', 'product_id': 'PY-STREAM-005', 'quantity': '1', 'referral_source': 'organic', 'region_id': 'US-CA', 'unit_price': '59.99', '_kafka_key': 'US-CA', '_kafka_partition': 0, '_kafka_offset': 3}
+2026-06-11 20:06:03 | INFO | HILDEBRAND | subtotal=59.99
+2026-06-11 20:06:03 | INFO | HILDEBRAND | tax=5.7
+2026-06-11 20:06:03 | INFO | HILDEBRAND | total=65.69
+2026-06-11 20:06:03 | INFO | HILDEBRAND | running_total=377.84
+2026-06-11 20:06:03 | INFO | HILDEBRAND | discount_amount=0.0
+2026-06-11 20:06:03 | INFO | HILDEBRAND | is_high_value=False
+2026-06-11 20:06:03 | INFO | HILDEBRAND | Wrote valid record to DuckDB:
+2026-06-11 20:06:03 | INFO | HILDEBRAND |   order=d77ed935-9b28-431d-bc25-0a3fd98f4154
+2026-06-11 20:06:03 | INFO | HILDEBRAND | MESSAGE ACCEPTED
+2026-06-11 20:06:03 | INFO | HILDEBRAND | order=d77ed935-9b28-431d-bc25-0a3fd98f4154
+2026-06-11 20:06:03 | INFO | HILDEBRAND | total=$65.69
+2026-06-11 20:06:03 | INFO | HILDEBRAND | consumed=4
+2026-06-11 20:06:03 | INFO | HILDEBRAND | RUNNING STATS
+2026-06-11 20:06:03 | INFO | HILDEBRAND | total_sales=$377.84
+2026-06-11 20:06:03 | INFO | HILDEBRAND | average=$94.46
+2026-06-11 20:06:03 | INFO | HILDEBRAND | min=$54.11
+2026-06-11 20:06:03 | INFO | HILDEBRAND | max=$194.82
+2026-06-11 20:06:03 | INFO | HILDEBRAND | {'currency_code': 'USD', 'customer_id': 'CUST-8573', 'customer_note': 'Learning at my own pace', 'datetime': '2026-05-04T08:41:00Z', 'device_type': 'mobile', 'discount_code': '', 'is_new_customer': 'false', 'is_online': 'true', 'order_id': '24b91995-25f8-4ad7-8fa6-2e4c15750e5e', 'payment_method': 'apple_pay', 'product_id': 'PY-VIZ-003', 'quantity': '1', 'referral_source': 'paid_search', 'region_id': 'US-MO', 'unit_price': '39.99', '_kafka_key': 'US-MO', '_kafka_partition': 0, '_kafka_offset': 4}
+2026-06-11 20:06:03 | INFO | HILDEBRAND | subtotal=39.99
+2026-06-11 20:06:03 | INFO | HILDEBRAND | tax=3.2
+2026-06-11 20:06:03 | INFO | HILDEBRAND | total=43.19
+2026-06-11 20:06:03 | INFO | HILDEBRAND | running_total=421.03
+2026-06-11 20:06:03 | INFO | HILDEBRAND | discount_amount=0.0
+2026-06-11 20:06:03 | INFO | HILDEBRAND | is_high_value=False
+2026-06-11 20:06:03 | INFO | HILDEBRAND | Wrote valid record to DuckDB:
+2026-06-11 20:06:03 | INFO | HILDEBRAND |   order=24b91995-25f8-4ad7-8fa6-2e4c15750e5e
+2026-06-11 20:06:03 | INFO | HILDEBRAND | MESSAGE ACCEPTED
+2026-06-11 20:06:03 | INFO | HILDEBRAND | order=24b91995-25f8-4ad7-8fa6-2e4c15750e5e
+2026-06-11 20:06:03 | INFO | HILDEBRAND | total=$43.19
+2026-06-11 20:06:03 | INFO | HILDEBRAND | consumed=5
+2026-06-11 20:06:03 | INFO | HILDEBRAND | RUNNING STATS
+2026-06-11 20:06:03 | INFO | HILDEBRAND | total_sales=$421.03
+2026-06-11 20:06:03 | INFO | HILDEBRAND | average=$84.21
+2026-06-11 20:06:03 | INFO | HILDEBRAND | min=$43.19
+2026-06-11 20:06:03 | INFO | HILDEBRAND | max=$194.82
+2026-06-11 20:06:03 | INFO | HILDEBRAND | {'currency_code': 'CAD', 'customer_id': 'CUST-8062', 'customer_note': '', 'datetime': '2026-05-04T08:54:00Z', 'device_type': 'tablet', 'discount_code': '', 'is_new_customer': 'false', 'is_online': 'true', 'order_id': '1ec0fc8b-998c-4f43-8a66-19e1fa7d5fa8', 'payment_method': 'paypal', 'product_id': 'PY-SQL-004', 'quantity': '1', 'referral_source': 'organic', 'region_id': 'CA-ON', 'unit_price': '44.99', '_kafka_key': 'CA-ON', '_kafka_partition': 0, '_kafka_offset': 5}
+2026-06-11 20:06:03 | INFO | HILDEBRAND | subtotal=44.99
+2026-06-11 20:06:03 | INFO | HILDEBRAND | tax=5.85
+2026-06-11 20:06:03 | INFO | HILDEBRAND | total=50.84
+2026-06-11 20:06:03 | INFO | HILDEBRAND | running_total=471.87
+2026-06-11 20:06:03 | INFO | HILDEBRAND | discount_amount=0.0
+2026-06-11 20:06:03 | INFO | HILDEBRAND | is_high_value=False
+2026-06-11 20:06:04 | INFO | HILDEBRAND | Wrote valid record to DuckDB:
+2026-06-11 20:06:04 | INFO | HILDEBRAND |   order=1ec0fc8b-998c-4f43-8a66-19e1fa7d5fa8
+2026-06-11 20:06:04 | INFO | HILDEBRAND | MESSAGE ACCEPTED
+2026-06-11 20:06:04 | INFO | HILDEBRAND | order=1ec0fc8b-998c-4f43-8a66-19e1fa7d5fa8
+2026-06-11 20:06:04 | INFO | HILDEBRAND | total=$50.84
+2026-06-11 20:06:04 | INFO | HILDEBRAND | consumed=6
+2026-06-11 20:06:04 | INFO | HILDEBRAND | RUNNING STATS
+2026-06-11 20:06:04 | INFO | HILDEBRAND | total_sales=$471.87
+2026-06-11 20:06:04 | INFO | HILDEBRAND | average=$78.64
+2026-06-11 20:06:04 | INFO | HILDEBRAND | min=$43.19
+2026-06-11 20:06:04 | INFO | HILDEBRAND | max=$194.82
+2026-06-11 20:06:14 | INFO | HILDEBRAND | No message received within 10.0s timeout.
+2026-06-11 20:06:14 | INFO | HILDEBRAND | Producer finished or paused. Stopping consumer.
+2026-06-11 20:06:14 | INFO | HILDEBRAND | Kafka consumer closed.
+2026-06-11 20:06:14 | INFO | HILDEBRAND | Saving artifacts...
+2026-06-11 20:06:14 | INFO | HILDEBRAND | WROTE OUTPUT_CSV = data/output/hildebrand_high_value_sales.csv
+2026-06-11 20:06:14 | INFO | HILDEBRAND | WROTE OUTPUT_DB = data/output/hildebrand_high_value.duckdb
+2026-06-11 20:06:14 | INFO | HILDEBRAND | ========================
+2026-06-11 20:06:14 | INFO | HILDEBRAND | SECTION E. Exit
+2026-06-11 20:06:14 | INFO | HILDEBRAND | ========================
+2026-06-11 20:06:14 | INFO | HILDEBRAND | Summary:
+2026-06-11 20:06:14 | INFO | HILDEBRAND | Consumed 6 message(s) from topic 'product-sales-case'.
+2026-06-11 20:06:14 | INFO | HILDEBRAND | Skipped  0 message(s).
+2026-06-11 20:06:14 | INFO | HILDEBRAND | OUTPUT_CSV = data/output/hildebrand_high_value_sales.csv
+2026-06-11 20:06:14 | INFO | HILDEBRAND |   Total sales:  $471.87
+2026-06-11 20:06:14 | INFO | HILDEBRAND |   Average sale: $78.64
+2026-06-11 20:06:14 | INFO | HILDEBRAND |   Minimum sale: $43.19
+2026-06-11 20:06:14 | INFO | HILDEBRAND |   Maximum sale: $194.82
+2026-06-11 20:06:14 | INFO | HILDEBRAND | ========================
+2026-06-11 20:06:14 | INFO | HILDEBRAND | Consumer executed successfully!
+2026-06-11 20:06:14 | INFO | HILDEBRAND | ========================
