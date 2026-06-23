@@ -359,6 +359,87 @@ Look for the text `db`:
 | C05 | Skipped  0 message(s).
 | C05 | OUTPUT_CSV = data\output\consumed_sales.csv
 | C05 |   Total sales:  $312.15
+
+
+⭐ Quick Start Guide
+This section gives new users everything they need to clone, install, and run your streaming‑05‑storage project with Kafka. It is designed so a classmate or teammate can pick up your repo and complete the assignment without confusion.
+
+🚀 1. Clone the Project
+bash
+git clone https://github.com/Thilde02/streaming-05-storage.git
+cd streaming-05-storage
+🐍 2. Create and Activate a Virtual Environment
+bash
+python3 -m venv .venv
+source .venv/bin/activate
+If you are on Windows PowerShell:
+
+powershell
+.venv\Scripts\Activate.ps1
+📦 3. Install the Project
+This installs the package defined in pyproject.toml, including datafun_streaming and all dependencies.
+
+bash
+pip install .
+🧪 4. Required Environment Variables
+Copy .env.example to .env:
+
+bash
+cp .env.example .env
+Make sure your .env contains:
+
+Code
+KAFKA_BOOTSTRAP_SERVERS=localhost:9092
+KAFKA_TOPIC=streaming-05-storage-case
+KAFKA_GROUP_ID=streaming-consumer-group-A
+CONSUMER_TIMEOUT_SECONDS=10.0
+CONSUMER_MAX_MESSAGES=1000
+🧵 5. Start Kafka (Terminal 1: kafka)
+Navigate to your Kafka installation folder and start the broker:
+
+bash
+bin/zookeeper-server-start.sh config/zookeeper.properties
+bin/kafka-server-start.sh config/server.properties
+Keep this terminal open.
+
+📑 6. Manage Topics (Terminal 2: topics)
+Create or reset the topic:
+
+bash
+bin/kafka-topics.sh --create --topic streaming-05-storage-case --bootstrap-server localhost:9092
+List topics:
+
+bash
+bin/kafka-topics.sh --list --bootstrap-server localhost:9092
+📤 7. Run the Producer (Terminal 3: producer)
+From the project root:
+
+bash
+source .venv/bin/activate
+python3 src/streaming/kafka_producer_hildebrand.py
+You should see messages being sent.
+
+📥 8. Run the Consumer (Terminal 4: consumer)
+bash
+source .venv/bin/activate
+python3 src/streaming/kafka_consumer_hildebrand.py
+You should see:
+
+Code
+Consumer executed successfully!
+📁 9. Verify Output
+After running the consumer:
+
+A new project.log file appears in the project root
+
+Processed CSV appears in:
+
+Code
+data/output/consumed_sales.csv
+DuckDB database appears in:
+
+Code
+data/output/sales.duckdb
 | C05 |   Average sale: $104.05
 | C05 |   Minimum sale: $54.11
 | C05 |   Maximum sale: $194.82
